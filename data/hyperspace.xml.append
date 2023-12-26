@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FTL>
+
+<version>^1.8.0</version>
+
+<mod:findLike type="customSystems">
+    <mod:findLike type="system">
+        <mod:selector id="temporal" />
+        <mod:removeTag />
+    </mod:findLike>
+</mod:findLike>
+
+<mod:findLike type="customSystems" limit="1">
+    <mod-append:system id="temporal">
+        <speed>
+            <level1>
+                <duration>10</duration>
+                <cooldown>3</cooldown>
+                <strength>2</strength>
+            </level1>
+            <level2>
+                <duration>7</duration>
+                <cooldown>4</cooldown>
+                <strength>3</strength>
+            </level2>
+            <level3>
+                <duration>5</duration>
+                <cooldown>5</cooldown>
+                <strength>4</strength>
+            </level3>
+            <level4>
+                <duration>2</duration>
+                <cooldown>6</cooldown>
+                <strength>10</strength>
+            </level4>
+        </speed>
+        <slow>
+            <level1>
+                <duration>10</duration>
+                <cooldown>2</cooldown>
+                <strength>0.5</strength>
+            </level1>
+            <level2>
+                <duration>15</duration>
+                <cooldown>3</cooldown>
+                <strength>0.3333</strength>
+            </level2>
+            <level3>
+                <duration>20</duration>
+                <cooldown>4</cooldown>
+                <strength>0.25</strength>
+            </level3>
+            <level4>
+                <duration>25</duration>
+                <cooldown>5</cooldown>
+                <strength>0.2</strength>
+            </level4>
+        </slow>
+    </mod-append:system>
+</mod:findLike>
+
+<mod:findLike type="scripts" limit="1">
+    <mod-append:script>data/temporal_mastery/core.lua</mod-append:script>
+    <mod-append:script>data/temporal_mastery/ui.lua</mod-append:script>
+</mod:findLike>
+
+</FTL>

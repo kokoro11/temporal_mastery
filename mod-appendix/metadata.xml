@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<!--
+		CDATA tags mean no need to escape special characters.
+		Don't worry about spaces at the start/end. That gets trimmed.
+	-->
+
+
+	<!-- The title of this mod. -->
+	<title><![CDATA[ Temporal Mastery (Temporal System Overhaul) ]]></title>
+
+
+	<!--
+		This mod's thread on subsetgames.com. (haha, not actually)
+		If there's no thread yet, create one to announce your upcoming mod in the
+		forum. Then paste the url here.
+	-->
+	<threadUrl><![CDATA[ https://github.com/kokoro11/temporal_mastery ]]></threadUrl>
+
+
+	<!-- Your forum user name. -->
+	<author><![CDATA[ kokoro11 ]]></author>
+
+
+	<!--
+		The revision/variant of this release, preferably at least a number.
+		Examples:
+			0.3
+			2.1c Ships Only WIP
+			2.4.1 Hi-res Bkgs
+			1.0 for FTL 1.03.1
+	-->
+	<version><![CDATA[ 0.0.6 ]]></version>
+
+
+	<description>
+<![CDATA[
+This mod makes the Temporal System affect not only the speed of the crew in the room, but also the speed of the systems. For example, you can now use the Temporal System on weapon system to speed up or slow down weapon charging. Detailed interactions are listed below.
+
+All ion effects can be sped up or slowed down.
+shields: speed up charge rates and charge energy shields when shields are fully powered / slow down charge rates
+engines: increase / decrease ship evasion and FTL charge rates
+oxygen: speed up / slow down oxygen refill rates
+weapons: speed up / slow down charge rates
+drones: increase the number of drone projectiles and increase crew drones stats / drain power
+medbay: unchanged
+pilot: increase ship evasion and provide manning bouns / decrease ship evasion
+sensors: provide manning bouns / drain power
+doors: provide manning bouns / drain power
+telepoter: increase crew move speed
+cloaking: increase evasion when cloaking is active / decrease evasion when cloaking is active
+artillery: speed up / slow down charge rates
+battery: slowly provide bonus power / drain power
+clonebay: unchanged
+mindcontrol: allow multi-person mind control / drain power
+hacking: allow cluster hacking
+]]>
+	</description>
+
+	<!--
+		Suggestions for the description...
+
+		Write a short paragraph about the mod's effect first (what style ship, how
+		does it affect gameplay). No need to introduce yourself.
+
+		Optionally add a paragraph of background flavor.
+
+		Optionally list important features.
+
+		List any concerns about mod compatibility, preferred order, or requirements.
+
+		Mention "Replaces the XYZ ship." if relevant.
+			Kestrel-A, Engi-A,    Fed-A,     Zoltan-A,
+			Stealth-A, Rock-A,    Slug-A,    Mantis-A,
+			Lanius-A,  Crystal-A
+
+		Above all, keep the description general, so you won't have to edit
+		that again for each new version.
+	-->
+</metadata>
