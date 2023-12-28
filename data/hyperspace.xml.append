@@ -61,6 +61,7 @@
 </mod:findLike>
 
 <mod:findLike type="scripts" limit="1">
+    <mod-append:script>data/temporal_mastery/config.lua</mod-append:script>
     <mod-append:script>data/temporal_mastery/core.lua</mod-append:script>
     <mod-append:script>data/temporal_mastery/ui.lua</mod-append:script>
 </mod:findLike>

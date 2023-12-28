@@ -30,30 +30,119 @@
 			2.4.1 Hi-res Bkgs
 			1.0 for FTL 1.03.1
 	-->
-	<version><![CDATA[ 0.0.6 ]]></version>
+	<version><![CDATA[ 0.0.7 ]]></version>
 
 
 	<description>
 <![CDATA[
-This mod makes the Temporal System affect not only the speed of the crew in the room, but also the speed of the systems. For example, you can now use the Temporal System on weapon system to speed up or slow down weapon charging. Detailed interactions are listed below.
+This mod makes the Temporal System affect not only the speed of the crew in the room, but also the speed of the systems. For example, you can now use the Temporal System on weapon system to speed up or slow down weapon charging. Detailed effects are listed below.
 
-All ion effects can be sped up or slowed down.
-shields: speed up charge rates and charge energy shields when shields are fully powered / slow down charge rates
-engines: increase / decrease ship evasion and FTL charge rates
-oxygen: speed up / slow down oxygen refill rates
-weapons: speed up / slow down charge rates
-drones: increase the number of drone projectiles and increase crew drones stats / drain power
-medbay: unchanged
-pilot: increase ship evasion and provide manning bouns / decrease ship evasion
-sensors: provide manning bouns / drain power
-doors: provide manning bouns / drain power
-telepoter: increase crew move speed
-cloaking: increase evasion when cloaking is active / decrease evasion when cloaking is active
-artillery: speed up / slow down charge rates
-battery: slowly provide bonus power / drain power
-clonebay: unchanged
-mindcontrol: allow multi-person mind control / drain power
-hacking: allow cluster hacking
+
+Shield:
+increase shield recharge rate (+0.4x, +1.0x, +2.0x, +6.5x)
+charge energy shields when shields are fully powered
+/
+decrease shield recharge rate (-0.5x)
+
+
+Engine:
+increase ship evasion (about 5 * engine power * temporal level * 0.6)
+increase FTL charge rate (+0.28x, +1.56x, +4.12x, +9.24x)
+/
+decrease ship evasion (about 5 * engine power * temporal level / 3)
+decrease FTL charge rate (-0.5x)
+
+
+Oxygen:
+increase oxygen refill rates (+1.0x, +3.0x, +7.0x, +15.0x)
+/
+decrease oxygen refill rates (-0.75x, -0.88x, -0.94x, -0.97x)
+
+
+Weapon:
+increase weapon charge rates (+0.25x, +0.7x, +1.5x, +5.0x)
+/
+decrease weapon charge rates (-0.5x)
+
+
+Drone:
+increase crew drones stats (x2.0, x2.86, x4.0, x10.0)
+multiply the number of space drone projectiles by temporal level (x1, x2, x3, x4)
+/
+reduce max power by an amount equal to temporal level (-1, -2, -3, -4)
+
+
+Medbay:
+no custom effects
+/
+no custom effects
+
+
+Pilot:
+increase ship evasion (5 * manning level * temporal level)
+increase manning bonus when temporal level is above 1
+/
+decrease ship evasion (3 * (4 - manning level) * temporal level)
+
+
+Sensor:
+provide manning bonus even when system is not manned
+/
+reduce max power by an amount equal to temporal level (-1, -2, -3, -3)
+
+
+Door:
+provide manning bonus even when system is not manned
+/
+reduce max power by an amount equal to temporal level (-1, -2, -3, -3)
+
+
+Teleporter:
+increase crew move speed
+when teleporter level is equal to 4, crew can teleport anywhere
+/
+reduce max power by an amount equal to half of temporal level (-1, -1, -2, -2)
+
+
+Cloaking:
+increase evasion when cloaking is active (5 * cloaking * temporal)
+/
+decrease evasion when cloaking is active (5 * (5 - cloaking) * temporal)
+
+
+Artillery:
+increase artillery charge rate (+0.5x, 1.4x, +3.0x, +10.0x)
+/
+decrease artillery charge rate (-0.75x)
+
+
+Battery:
+slowly generate bonus power when battery is turned on
+/
+reduce max power by an amount equal to temporal level (-1, -2, -3, -4)
+
+
+Clonebay:
+no custom effects
+/
+no custom effects
+
+
+Mind Control:
+allow multi-person mind control when mind control is active
+the number of mind controlled is equal to (mind control level * temporal level)
+/
+reduce max power by an amount equal to half of temporal level (-1, -1, -2, -2)
+
+
+Hacking:
+allow cluster hacking when hacking is active
+the area of cluster hacking is equal to temporal level
+/
+reduce max power by an amount equal to half of temporal level (-1, -1, -2, -2)
+
+* All ion effects can be sped up (+0.5x, +1.43x, +3.0x, +10.0x) or slowed down (-0.5x).
+* Hacking can cancel out most custom effects listed above.
 ]]>
 	</description>
 

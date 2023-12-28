@@ -1,4 +1,10 @@
 
+if not mods.tmConfig then
+    error("Temporal Mastery scripts are loaded in wrong order.")
+end
+
+local tmConfig = mods.tmConfig
+
 local function getTimeDilation(shipMgr, sysId)
     if not shipMgr:HasSystem(sysId) or shipMgr:IsSystemHacked(sysId) >= 2 then
         return 0
@@ -68,7 +74,12 @@ end
 
 local function hackingUpgrade(shipMgr, speed)
     local sys = shipMgr.hackingSystem
-    if speed < 0 or sys.iLockCount ~= -1 then
+    if speed < 0 then
+        clearBonusHacking(sys)
+        sys.extend.additionalPowerLoss = sys.extend.additionalPowerLoss + math.ceil(-speed / 2)
+        return
+    end
+    if sys.iLockCount ~= -1 then
         clearBonusHacking(sys)
         return
     end
@@ -126,11 +137,33 @@ local function clearBonusMC(sys)
     sys.table.__TM__bonusMC = nil
 end
 
+local function applyBonusMC(sys, vCrewList, iShipId, limit)
+    for i = 0, vCrewList:size() - 1 do
+        if limit <= 0 then
+            break
+        end
+        local crew = vCrewList[i]
+        if not (crew.bDead or crew:IsDrone()) then
+            if crew.bMindControlled and crew.iShipId == iShipId then
+                crew:SetMindControl(false)
+                Hyperspace.Global.GetInstance():GetSoundControl():PlaySoundMix("mindControlEnd", -1, false)
+                limit = limit - 1
+            elseif not crew.bMindControlled and not resistsMC(crew) and crew.iShipId ~= iShipId then
+                crew:SetMindControl(true)
+                Hyperspace.Global.GetInstance():GetSoundControl():PlaySoundMix("mindControl", -1, false)
+                table.insert(sys.table.__TM__bonusMC.crewList, crew)
+                limit = limit - 1
+            end
+        end
+    end
+    return limit
+end
+
 local function mcUpgrade(shipMgr, speed)
     local sys = shipMgr.mindSystem
     if speed < 0 then
         clearBonusMC(sys)
-        sys.extend.additionalPowerLoss = sys.extend.additionalPowerLoss - speed
+        sys.extend.additionalPowerLoss = sys.extend.additionalPowerLoss + math.ceil(-speed / 2)
         return
     end
     if sys.iLockCount ~= -1 then
@@ -143,48 +176,11 @@ local function mcUpgrade(shipMgr, speed)
     sys.table.__TM__bonusMC = {}
     sys.table.__TM__bonusMC.crewList = {}
     local limit = sys:GetEffectivePower() * speed
-    local vCrewList = shipMgr.vCrewList
-    for i = 0, vCrewList:size() - 1 do
-        if limit <= 0 then
-            return
-        end
-        local crew = vCrewList[i]
-        if not (crew.bDead or crew:IsDrone()) then
-            --print(crew:GetSpecies(), "iShipId=", crew.iShipId, "intruder=", crew.intruder, "bMindControlled=", crew.bMindControlled)
-            if crew.bMindControlled and crew.iShipId == shipMgr.iShipId then
-                crew:SetMindControl(false)
-                Hyperspace.Global.GetInstance():GetSoundControl():PlaySoundMix("mindControlEnd", -1, false)
-                limit = limit - 1
-            elseif not crew.bMindControlled and not resistsMC(crew) and crew.iShipId ~= shipMgr.iShipId then
-                crew:SetMindControl(true)
-                Hyperspace.Global.GetInstance():GetSoundControl():PlaySoundMix("mindControl", -1, false)
-                table.insert(sys.table.__TM__bonusMC.crewList, crew)
-                limit = limit - 1
-            end
-        end
-    end
-
+    limit = applyBonusMC(sys, shipMgr.vCrewList, shipMgr.iShipId, limit)
     local enemyShipId = (shipMgr.iShipId + 1) % 2
     local enemyShip = Hyperspace.Global.GetInstance():GetShipManager(enemyShipId)
-    vCrewList = enemyShip.vCrewList
-    for i = 0, vCrewList:size() - 1 do
-        if limit <= 0 then
-            return
-        end
-        local crew = vCrewList[i]
-        if not (crew.bDead or crew:IsDrone()) then
-            --print(crew:GetSpecies(), "iShipId=", crew.iShipId, "intruder=", crew.intruder, "bMindControlled=", crew.bMindControlled)
-            if crew.bMindControlled and crew.iShipId == shipMgr.iShipId then
-                crew:SetMindControl(false)
-                Hyperspace.Global.GetInstance():GetSoundControl():PlaySoundMix("mindControlEnd", -1, false)
-                limit = limit - 1
-            elseif not crew.bMindControlled and not resistsMC(crew) and crew.iShipId ~= shipMgr.iShipId then
-                crew:SetMindControl(true)
-                Hyperspace.Global.GetInstance():GetSoundControl():PlaySoundMix("mindControl", -1, false)
-                table.insert(sys.table.__TM__bonusMC.crewList, crew)
-                limit = limit - 1
-            end
-        end
+    if enemyShip then
+        applyBonusMC(sys, enemyShip.vCrewList, shipMgr.iShipId, limit)
     end
 end
 
@@ -195,16 +191,15 @@ script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, upgradeFactory(14, mc
     end
 end))
 
-local function chargeUp(weapon, speed, safetyMargin, factors)
+local function chargeUp(weapon, speed, speedUp, slowDown, safetyMargin)
     safetyMargin = safetyMargin or 0.1
-    factors = factors or {0.2, 0.6, 1.2, 4.0}
     local safeMaxCooldown = weapon.cooldown.second - safetyMargin
     if weapon.powered and safeMaxCooldown > 0 and weapon.cooldown.first < safeMaxCooldown then
         local cdMod = 0.0
         if speed < 0 then
-            cdMod = -0.5
+            cdMod = slowDown[-speed]
         else
-            cdMod = factors[speed]
+            cdMod = speedUp[speed]
         end
         local delta = Hyperspace.FPS.SpeedFactor / 16 * cdMod
         weapon.cooldown.first = math.max(math.min(weapon.cooldown.first + delta, safeMaxCooldown), 0)
@@ -212,14 +207,27 @@ local function chargeUp(weapon, speed, safetyMargin, factors)
 end
 
 local function weaponUpgrade(shipMgr, speed)
-    local safetyMargin = 0.1
     local weapons = shipMgr:GetWeaponList()
     for i = 0, weapons:size() - 1 do
-        chargeUp(weapons[i], speed, 0.1, {0.2, 0.6, 1.2, 4.0})
+        chargeUp(weapons[i], speed, tmConfig.WEAPON_SPEEDUP_FACTORS, tmConfig.WEAPON_SLOWDOWN_FACTORS)
     end
 end
 
 script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, upgradeFactory(3, weaponUpgrade))
+
+local function artilleryUpgrade(shipMgr)
+    local systems = shipMgr.artillerySystems
+    for i = 0, systems:size() - 1 do
+        local sys = systems[i]
+        local power = sys:GetEffectivePower()
+        local speed = shipMgr.ship.vRoomList[sys:GetRoomId()].extend.timeDilation
+        if power > 0 and speed ~= 0 and sys.iHackEffect < 2 then
+            chargeUp(sys.projectileFactory, speed, tmConfig.ARTILLERY_SPEEDUP_FACTORS, tmConfig.ARTILLERY_SLOWDOWN_FACTORS)
+        end
+    end
+end
+
+script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, artilleryUpgrade)
 
 local function clearSuperTimer(shieldSystem)
     shieldSystem.table.__TM__superTimer = 0
@@ -266,17 +274,17 @@ local function shieldUpgrade(shipMgr)
             return
         end
         if speed < 0 then
-            cdMod = -0.5
+            cdMod = tmConfig.SHIELD_SLOWDOWN_FACTORS[-speed]
         else
-            cdMod = ({0.4, 1.0, 2.0, 6.5})[speed]
+            cdMod = tmConfig.SHIELD_SPEEDUP_FACTORS[speed]
         end
         local delta = Hyperspace.FPS.SpeedFactor / 16 * cdMod
         sys.shields.charger = math.max(sys.shields.charger + delta, 0)
         return
     end
-    local chargeSpeed = ({0.15, 0.35, 0.7, 2.25})[speed]
+    local chargeSpeed = tmConfig.SUPERSHIELD_CHARGE_RATES[speed]
     local delta = Hyperspace.FPS.SpeedFactor / 16 * chargeSpeed
-    chargeSuperShield(sys, delta, power // 2)
+    chargeSuperShield(sys, delta, 5)
 end
 
 script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, shieldUpgrade)
@@ -288,9 +296,9 @@ local function oxygenUpgrade(shipMgr, speed)
     local refill = sys:GetRefillSpeed()
     local mod = 0
     if speed > 0 then
-        mod = ({1.0, 3.0, 7.0, 15.0})[speed] * power
+        mod = tmConfig.OXYGEN_SPEEDUP_FACTORS[speed] * power
     else
-        mod = ({-0.75, -0.88, -0.94, -0.97})[-speed] / power
+        mod = tmConfig.OXYGEN_SLOWDOWN_FACTORS[-speed] / power
     end
     delta = refill * mod
     local graph = Hyperspace.ShipGraph.GetShipInfo(shipMgr.iShipId)
@@ -361,7 +369,7 @@ local function batteryUpgrade(shipMgr)
         return
     end
     -- speed > 0 and power >= sys:GetMaxPower() and sys.bTurnedOn
-    local chargeSpeed = ({0.15, 0.35, 0.7, 2.25})[speed]
+    local chargeSpeed = tmConfig.BONUSPOWER_CHARGE_RATES[speed]
     local delta = Hyperspace.FPS.SpeedFactor / 16 * chargeSpeed
     chargeBounsPower(sys, delta, power * 2)
 end
@@ -384,9 +392,9 @@ local function lockUpgrades(shipMgr)
         if sys.iHackEffect < 2 then
             local speed = shipMgr.ship.vRoomList[sys:GetRoomId()].extend.timeDilation
             if speed < 0 then
-                speedUpLock(sys, {-0.5, -0.5, -0.5, -0.5}, speed)
+                speedUpLock(sys, tmConfig.IONLOCK_SLOWDOWN_FACTORS, speed)
             elseif speed > 0 then
-                speedUpLock(sys, {0.5, 1.43, 3.0, 10.0}, speed)
+                speedUpLock(sys, tmConfig.IONLOCK_SPEEDUP_FACTORS, speed)
             end
         end
     end
@@ -455,27 +463,12 @@ local function engineUpgrade(shipMgr, augName, augValue)
         return Defines.Chain.CONTINUE, augValue
     end
     if speed < 0 then
-        return Defines.Chain.CONTINUE, augValue - 0.5
+        return Defines.Chain.CONTINUE, augValue + tmConfig.FTL_SLOWDOWN_FACTORS[-speed]
     end
-    local chargeSpeed = ({2, 4, 8, 16})[speed] * 0.64 - 1
-    return Defines.Chain.CONTINUE, augValue + chargeSpeed
+    return Defines.Chain.CONTINUE, augValue + tmConfig.FTL_SPEEDUP_FACTORS[speed]
 end
 
 script.on_internal_event(Defines.InternalEvents.GET_AUGMENTATION_VALUE, engineUpgrade)
-
-local function artilleryUpgrade(shipMgr)
-    local systems = shipMgr.artillerySystems
-    for i = 0, systems:size() - 1 do
-        local sys = systems[i]
-        local power = sys:GetEffectivePower()
-        local speed = shipMgr.ship.vRoomList[sys:GetRoomId()].extend.timeDilation
-        if power > 0 and speed ~= 0 and sys.iHackEffect < 2 then
-            chargeUp(sys.projectileFactory, speed)
-        end
-    end
-end
-
-script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, artilleryUpgrade)
 
 local function dodgeUpgrade(shipMgr, dodge)
     local engineSpeed = getTimeDilation(shipMgr, 1)
@@ -499,9 +492,9 @@ local function dodgeUpgrade(shipMgr, dodge)
             dodge = dodge + 3 * (4 - pilotingBoost) * pilotingSpeed
         end
     end
-    
+
     dodge = math.max(dodge, 0)
-    
+
     local cloakSpeed = getTimeDilation(shipMgr, 10)
     local cloakSystem = shipMgr.cloakSystem
     if cloakSpeed ~= 0 and cloakSystem.bTurnedOn then
@@ -598,7 +591,7 @@ script.on_internal_event(Defines.InternalEvents.DRONE_FIRE, function(proj, drone
     }
     local case = cases[drone.weaponBlueprint.typeName]
     if case then
-        for _ = 1, speed do
+        for _ = 2, speed do
             case()
         end
     end
@@ -629,20 +622,14 @@ local function createDroneBoosts(factors, durations)
     return boosts
 end
 
---local positiveBoosts = createDroneBoosts({1.5, 2.25, 3.375, 5.0625}, {10, 7, 5, 2})
-local positiveBoosts = createDroneBoosts({2.0, 2.86, 4.0, 10.0}, {10, 7, 5, 2})
---local negative = createDroneBoosts({0.25, 0.12, 0.06, 0.03}, {10, 17, 25, 33})
+local positiveBoosts = createDroneBoosts(tmConfig.CREWDRONE_SPEEDUP_FACTORS, tmConfig.TEMPORAL_SPEEDUP_DURATIONS)
+--local negativeBoosts = createDroneBoosts(tmConfig.CREWDRONE_SLOWDOWN_FACTORS, tmConfig.TEMPORAL_SLOWDOWN_DURATIONS)
 
 local function dronesUpgrade(shipMgr)
     local sys = shipMgr.droneSystem
     if not sys then
         return
     end
-    --local power = sys:GetEffectivePower()
-    --if power <= 0 then
-    --    sys.table.__TM__isBoosting = false
-    --    return
-    --end
     if sys.iHackEffect >= 2 then
         sys.table.__TM__isBoosting = false
         return
@@ -732,25 +719,33 @@ local function createTeleportBoosts(durations)
     return boosts
 end
 
-local crewBoosts = createCrewBoosts({2.0, 4.0, 8.0, 16.0}, {10.0, 7.0, 5.0, 2.0})
-local teleportBoosts = createTeleportBoosts({10.0, 7.0, 5.0, 2.0})
+local crewBoosts = createCrewBoosts(tmConfig.TELEPORT_SPEEDUP_FACTORS, tmConfig.TEMPORAL_SPEEDUP_DURATIONS)
+local teleportBoosts = createTeleportBoosts(tmConfig.TEMPORAL_SPEEDUP_DURATIONS)
 
 local function teleporterUpgrade(shipMgr)
-    local sys = shipMgr:GetSystem(9)
+    local sys = shipMgr.teleportSystem
     if not sys then
         return
     end
-    if sys.iHackEffect >= 2 then
-        sys.table.__TM__isBoosting = false
-        return
-    end
-    local health = math.max(sys.healthState.first - sys.iTempPowerLoss)
-    if health <= 0 then
-        sys.table.__TM__isBoosting = false
-        return
-    end
     local speed = shipMgr.ship.vRoomList[sys:GetRoomId()].extend.timeDilation
-    if speed <= 0 then
+    if speed < 0 then
+        sys.table.__TM__isBoosting = false
+        if not sys.table.__TM__powerLoss then
+            sys.table.__TM__powerLoss = math.ceil(-speed / 2)
+            sys:SetPowerLoss(sys.iTempPowerLoss + sys.table.__TM__powerLoss)
+        end
+        return
+    end
+    if sys.table.__TM__powerLoss then
+        sys:SetPowerLoss(sys.iTempPowerLoss - sys.table.__TM__powerLoss)
+        sys.table.__TM__powerLoss = nil
+    end
+    if speed == 0 or sys.iHackEffect >= 2 then
+        sys.table.__TM__isBoosting = false
+        return
+    end
+    local health = math.max(sys.healthState.first - sys.iTempPowerLoss, 0)
+    if health <= 0 then
         sys.table.__TM__isBoosting = false
         return
     end
@@ -765,7 +760,7 @@ local function teleporterUpgrade(shipMgr)
             for _, boost in ipairs(crewBoosts[speed]) do
                 Hyperspace.StatBoostManager.GetInstance():CreateTimedAugmentBoost(Hyperspace.StatBoost(boost), crew)
             end
-            if health >= 4 and speed >= 3 then
+            if health >= 4 then
                 for _, boost in ipairs(teleportBoosts[speed]) do
                     Hyperspace.StatBoostManager.GetInstance():CreateTimedAugmentBoost(Hyperspace.StatBoost(boost), crew)
                 end
@@ -783,7 +778,7 @@ local function teleporterUpgrade(shipMgr)
             for _, boost in ipairs(crewBoosts[speed]) do
                 Hyperspace.StatBoostManager.GetInstance():CreateTimedAugmentBoost(Hyperspace.StatBoost(boost), crew)
             end
-            if health >= 4 and speed >= 3 then
+            if health >= 4 then
                 for _, boost in ipairs(teleportBoosts[speed]) do
                     Hyperspace.StatBoostManager.GetInstance():CreateTimedAugmentBoost(Hyperspace.StatBoost(boost), crew)
                 end
