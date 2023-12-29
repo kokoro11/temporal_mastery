@@ -95,11 +95,15 @@ local function hackingUpgrade(shipMgr, speed)
     sys.table.__TM__bonusHacking.hackedShipId = hackedShipId
     sys.table.__TM__bonusHacking.adj = adj
     for id, _ in pairs(adj) do
+        if shipMgr:GetDroneCount() <= 0 then
+            break
+        end
         local enemySys = hackedShip:GetSystemInRoom(id)
         if enemySys then
             enemySys.iHackEffect = 2
             enemySys.bUnderAttack = true
             Hyperspace.Global.GetInstance():GetSoundControl():PlaySoundMix("hackStart", -1, false)
+            shipMgr:ModifyDroneCount(-1)
         end
     end
 end
