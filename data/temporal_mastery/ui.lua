@@ -1,4 +1,10 @@
 
+if not mods.tmConfig then
+    error("Temporal Mastery scripts are loaded in wrong order.")
+end
+
+local tmConfig = mods.tmConfig
+
 local blackColor = Graphics.GL_Color(0 / 255, 0 / 255, 0 / 255, 1.0)
 local whiteColor = Graphics.GL_Color(255 / 255, 255 / 255, 255 / 255, 1.0)
 local greenColor = Graphics.GL_Color(100 / 255, 255 / 255, 100 / 255, 1.0)
@@ -30,7 +36,7 @@ local function renderBonusEnergyCharger(playerShip)
         Graphics.CSurface.GL_DrawRect(14, 696, 24 * powerTimer, 3, goldColor)
     end
 
-    local bonusPower = Hyperspace.playerVariables.__TM__bonusPower0
+    local bonusPower = tmConfig.player['bonus_power']
     if bonusPower <= 0 then
         return
     end

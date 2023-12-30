@@ -30,12 +30,12 @@
 			2.4.1 Hi-res Bkgs
 			1.0 for FTL 1.03.1
 	-->
-	<version><![CDATA[ 0.0.7 ]]></version>
+	<version><![CDATA[ 0.0.8 ]]></version>
 
 
 	<description>
 <![CDATA[
-This mod makes the Temporal System affect not only the speed of the crew in the room, but also the speed of the systems. For example, you can now use the Temporal System on weapon system to speed up or slow down weapon charging. Detailed effects are listed below.
+This mod makes the Temporal System affect not only the speed of the crew in the room, but also the speed of the systems. For example, you can now use the Temporal System on weapon system to speed up or slow down weapon charging. Detailed effects on systems are listed below.
 
 
 Shield:
