@@ -38,22 +38,22 @@
         <slow>
             <level1>
                 <duration>10</duration>
-                <cooldown>2</cooldown>
+                <cooldown>3</cooldown>
                 <strength>0.5</strength>
             </level1>
             <level2>
                 <duration>15</duration>
-                <cooldown>3</cooldown>
+                <cooldown>4</cooldown>
                 <strength>0.3333</strength>
             </level2>
             <level3>
                 <duration>20</duration>
-                <cooldown>4</cooldown>
+                <cooldown>5</cooldown>
                 <strength>0.25</strength>
             </level3>
             <level4>
                 <duration>25</duration>
-                <cooldown>5</cooldown>
+                <cooldown>6</cooldown>
                 <strength>0.2</strength>
             </level4>
         </slow>

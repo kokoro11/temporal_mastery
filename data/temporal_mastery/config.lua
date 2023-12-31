@@ -54,5 +54,5 @@ end
 tmConfig.player = playerConfigList
 
 script.on_game_event('_TM_INSTALL_REVERSER', false, function() tmConfig.setPlayerConfig('temporal_reverser', 1) end)
-script.on_game_event('_TM_INSTALL_REACTOR', false, function() tmConfig.setPlayerConfig('bpgen_speed', 1) end)
+script.on_game_event('_TM_INSTALL_REACTOR', false, function() tmConfig.setPlayerConfig('bpgen_speed', playerConfigList.bpgen_speed + 1) end)
 script.on_game_event('_TM_INSTALL_STUNNER', false, function() tmConfig.setPlayerConfig('temporal_stun', 1) end)

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FTL>
+
+<text name="_tm_text_button_tooltip">Install internal upgrades for the temporal system.</text>
+<text name="_tm_text_button_tooltip" language="zh-Hans">为时流系统安装内部升级</text>
+
+<text name="_tm_text_button_inactive">Unavailable!</text>
+<text name="_tm_text_button_inactive" language="zh-Hans">不可用</text>
+
+<text name="_tm_text_option_invalid">Option invalid.</text>
+<text name="_tm_text_option_invalid" language="zh-Hans">无效选项</text>
+
+<text name="_tm_text_nevermind">Nevermind</text>
+<text name="_tm_text_nevermind" language="zh-Hans">返回</text>
+
+<text name="_tm_text_continue">Continue...</text>
+<text name="_tm_text_continue" language="zh-Hans">继续</text>
+
+<text name="_tm_text_menu">Which upgrade for the temporal system would you like to install?</text>
+<text name="_tm_text_menu" language="zh-Hans">你想安装哪项升级？</text>
+
+<text name="_tm_text_menu_level3_1">Upgrade to Level 3 [UNAVAILABLE: system is not level 2]</text>
+<text name="_tm_text_menu_level3_1" language="zh-Hans">升级到第三级 [不可用: 系统未达到二级]</text>
+
+<text name="_tm_text_menu_level3_2">Upgrade to Level 3</text>
+<text name="_tm_text_menu_level3_2" language="zh-Hans">升级到第三级</text>
+
+<text name="_tm_text_menu_level3_3">Upgrade to Level 3 [INSTALLED]</text>
+<text name="_tm_text_menu_level3_3" language="zh-Hans">升级到第三级 [已安装]</text>
+
+<text name="_tm_text_menu_trick_room_1">Trick Room</text>
+<text name="_tm_text_menu_trick_room_1" language="zh-Hans">戏法空间</text>
+
+<text name="_tm_text_menu_trick_room_2">Trick Room [INSTALLED]</text>
+<text name="_tm_text_menu_trick_room_2" language="zh-Hans">戏法空间 [已安装]</text>
+
+<text name="_tm_text_menu_breeder_reactor_1">Breeder Reactor</text>
+<text name="_tm_text_menu_breeder_reactor_1" language="zh-Hans">增殖反应堆</text>
+
+<text name="_tm_text_menu_breeder_reactor_2">Breeder Reactor [INSTALLED: 1/2]</text>
+<text name="_tm_text_menu_breeder_reactor_2" language="zh-Hans">增殖反应堆 [已安装：1/2]</text>
+
+<text name="_tm_text_menu_breeder_reactor_3">Breeder Reactor [INSTALLED: 2/2]</text>
+<text name="_tm_text_menu_breeder_reactor_3" language="zh-Hans">增殖反应堆 [已安装：2/2]</text>
+
+<text name="_tm_text_menu_temporal_stun_1">Temporal Stun</text>
+<text name="_tm_text_menu_temporal_stun_1" language="zh-Hans">时流眩晕</text>
+
+<text name="_tm_text_menu_temporal_stun_2">Temporal Stun [INSTALLED]</text>
+<text name="_tm_text_menu_temporal_stun_2" language="zh-Hans">时流眩晕 [已安装]</text>
+
+<text name="_tm_text_perfrom_upgrade">Perform the upgrade</text>
+<text name="_tm_text_perfrom_upgrade" language="zh-Hans">进行升级</text>
+
+<text name="_tm_text_install_upgrade">You install the upgrade.</text>
+<text name="_tm_text_install_upgrade" language="zh-Hans">你安装了这项升级。</text>
+
+<text name="_tm_text_detail_level3">You are about to upgrade the temporal system to level 3.</text>
+<text name="_tm_text_detail_level3" language="zh-Hans">你即将把时流系统升级到第三级。</text>
+
+<text name="_tm_text_detail_level3_1">This upgrade is unavailable. Is not compatible with Trick Room.</text>
+<text name="_tm_text_detail_level3_1" language="zh-Hans">这项升级不可用，与戏法空间不兼容。</text>
+
+<text name="_tm_text_detail_trick_room">You are about to install the Trick Room.
+[Effects: On the player's ship, special effects caused by the temporal system are reversed]</text>
+<text name="_tm_text_detail_trick_room" language="zh-Hans">你即将安装戏法空间。
+[效果：在玩家的舰船上，逆反由时流系统造成的特殊效果]</text>
+
+<text name="_tm_text_detail_trick_room_1">This upgrade is unavailable. Is not compatible with Level 3 temporal system and above.</text>
+<text name="_tm_text_detail_trick_room_1" language="zh-Hans">这项升级不可用，与三级及以上时流系统不兼容。</text>
+
+<text name="_tm_text_detail_breeder_reactor">You are about to install the Breeder Reactor.
+[Effects: Doubles the rate of power generation when speeding up the battery system]</text>
+<text name="_tm_text_detail_breeder_reactor" language="zh-Hans">你即将安装增殖反应堆。
+[效果：用时流加速电池系统时产生额外能量的速度翻倍]</text>
+
+<text name="_tm_text_detail_breeder_reactor_1">This upgrade is unavailable. Battery system is not installed.</text>
+<text name="_tm_text_detail_breeder_reactor_1" language="zh-Hans">这项升级不可用，未安装电池系统。</text>
+
+<text name="_tm_text_detail_temporal_stun">You are about to install the Temporal Stun.
+[Effects: Enemy crew inside a system room with temporal effect will be stunned. However the enemy ship will also have this effect]</text>
+<text name="_tm_text_detail_temporal_stun" language="zh-Hans">你即将安装时流眩晕。
+[效果：敌方船员在有时流效果的系统舱室内会被眩晕。然而，敌舰也将拥有此效果。]</text>
+
+</FTL>

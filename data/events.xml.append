@@ -7,8 +7,8 @@
         <event load="_TM_UPGRADE_MENU"/>
         <image>statusUI/tm_upgrade</image>
         <customLocation x="150" y="110"/>
-        <tooltip>Install internal upgrades for the temporal system.</tooltip>
-        <inactiveTooltip>Unavailable!</inactiveTooltip>
+        <tooltip id="_tm_text_button_tooltip"/>
+        <inactiveTooltip id="_tm_text_button_inactive"/>
         <jumpClear>false</jumpClear>
         <noDanger>true</noDanger>
         <req lvl="1">temporal</req>
@@ -17,7 +17,7 @@
 </mod:findName>
 
 <event name="_TM_OPTION_INVALID">
-	<text>Option invalid.</text>
+	<text id="_tm_text_option_invalid"/>
 	<item_modify>
 		<item type="drones" min="-99999" max="-99999"/>
 	</item_modify>
@@ -28,152 +28,153 @@
 </event>
 
 <event name="_TM_UPGRADE_MENU">
-	<text>Which upgrade for the temporal system would you like to install?</text>
+	<text id="_tm_text_menu"/>
     <!-- Level 3 -->
     <choice req="temporal" lvl="1" max_lvl="1" blue="false" hidden="true">
-        <text>Upgrade to Level 3 [UNAVAILABLE: system is not level 2]</text>
+        <text id="_tm_text_menu_level3_1"/>
         <event load="_TM_OPTION_INVALID"/>
     </choice>
     <choice req="temporal" lvl="2" max_lvl="2" blue="false">
-        <text>Upgrade to Level 3</text>
+        <text id="_tm_text_menu_level3_2"/>
         <event load="_TM_UPGRADE_LEVEL3"/>
     </choice>
     <choice req="temporal" lvl="3" blue="false" hidden="true">
-        <text>Upgrade to Level 3 [INSTALLED]</text>
+        <text id="_tm_text_menu_level3_3"/>
         <event load="_TM_OPTION_INVALID"/>
     </choice>
     <!-- Trick Room -->
 	<choice req="__TM__temporal_reverser" lvl="0" max_lvl="0" blue="false">
-		<text>Trick Room</text>
+		<text id="_tm_text_menu_trick_room_1"/>
 		<event load="_TM_UPGRADE_REVERSE"/>
 	</choice>
     <choice req="__TM__temporal_reverser" lvl="1" blue="false" hidden="true">
-		<text>Trick Room [INSTALLED]</text>
+		<text id="_tm_text_menu_trick_room_2"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
     <!-- Breeder Reactor -->
     <choice req="__TM__bpgen_speed" lvl="0" max_lvl="0" blue="false">
-		<text>Breeder Reactor</text>
+		<text id="_tm_text_menu_breeder_reactor_1"/>
 		<event load="_TM_UPGRADE_REACTOR"/>
 	</choice>
-    <choice req="__TM__bpgen_speed" lvl="1" blue="false" hidden="true">
-		<text>Breeder Reactor [INSTALLED]</text>
+    <choice req="__TM__bpgen_speed" lvl="1" max_lvl="1" blue="false">
+		<text id="_tm_text_menu_breeder_reactor_2"/>
+		<event load="_TM_UPGRADE_REACTOR"/>
+	</choice>
+    <choice req="__TM__bpgen_speed" lvl="2" blue="false" hidden="true">
+		<text id="_tm_text_menu_breeder_reactor_3"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
     <!-- Temporal Stun -->
     <choice req="__TM__temporal_stun" lvl="0" max_lvl="0" blue="false">
-		<text>Temporal Stun</text>
+		<text id="_tm_text_menu_temporal_stun_1"/>
 		<event load="_TM_UPGRADE_STUNNER"/>
 	</choice>
     <choice req="__TM__temporal_stun" lvl="1" blue="false" hidden="true">
-		<text>Temporal Stun [INSTALLED]</text>
+		<text id="_tm_text_menu_temporal_stun_2"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
     <choice>
-		<text>Nevermind</text>
+		<text id="_tm_text_nevermind"/>
         <event/>
 	</choice>
 </event>
 
 <event name="_TM_UPGRADE_LEVEL3">
-	<text>You are about to upgrade the temporal system to level 3.</text>
+	<text id="_tm_text_detail_level3"/>
 	<choice req="__TM__temporal_reverser" lvl="0" max_lvl="0" blue="false">
-		<text>Perform the upgrade</text>
+		<text id="_tm_text_perfrom_upgrade"/>
 		<event>
-			<text>You install the upgrade.</text>
+			<text id="_tm_text_install_upgrade"/>
             <upgrade amount="1" system="temporal"/>
 			<item_modify>
 				<item type="scrap" min="-120" max="-120"/>
 			</item_modify>
 			<choice>
-				<text>Continue...</text>
+				<text id="_tm_text_continue"/>
 				<event/>
 			</choice>
 		</event>
 	</choice>
 	<choice req="__TM__temporal_reverser" lvl="1" blue="false" hidden="true">
-		<text>This upgrade is unavailable. Is not compatible with Trick Room.</text>
+		<text id="_tm_text_detail_level3_1"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
 	<choice>
-		<text>Nevermind</text>
+		<text id="_tm_text_nevermind"/>
         <event load="_TM_UPGRADE_MENU_LOAD"/>
 	</choice>
 </event>
 
 <event name="_TM_INSTALL_REVERSER"/>
 <event name="_TM_UPGRADE_REVERSE">
-    <text>You are about to install the Trick Room.
-	[Effects: On the player's ship, custom effects caused by the temporal system are reversed]</text>
+    <text id="_tm_text_detail_trick_room"/>
     <choice req="temporal" lvl="1" max_lvl="2" blue="false">
-		<text>Perform the upgrade</text>
+		<text id="_tm_text_perfrom_upgrade"/>
 		<event>
-			<text>You install the upgrade.</text>
+			<text id="_tm_text_install_upgrade"/>
 			<item_modify>
 				<item type="scrap" min="-120" max="-120"/>
 			</item_modify>
 			<choice>
-				<text>Continue...</text>
+				<text id="_tm_text_continue"/>
                 <event load="_TM_INSTALL_REVERSER"/>
 			</choice>
 		</event>
 	</choice>
     <choice req="temporal" lvl="3" blue="false" hidden="true">
-		<text>This upgrade is unavailable. Is not compatible with Level 3 temporal system and above.</text>
+		<text id="_tm_text_detail_trick_room_1"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
     <choice>
-		<text>Nevermind</text>
+		<text id="_tm_text_nevermind"/>
         <event load="_TM_UPGRADE_MENU_LOAD"/>
 	</choice>
 </event>
 
 <event name="_TM_INSTALL_REACTOR"/>
 <event name="_TM_UPGRADE_REACTOR">
-    <text>You are about to install the Breeder Reactor.
-	[Effects: Doubles the rate of power generation when speeding up the battery system]</text>
+    <text id="_tm_text_detail_breeder_reactor"/>
     <choice req="battery" lvl="1" blue="false">
-		<text>Perform the upgrade</text>
+		<text id="_tm_text_perfrom_upgrade"/>
 		<event>
-			<text>You install the upgrade.</text>
+			<text id="_tm_text_install_upgrade"/>
 			<item_modify>
 				<item type="scrap" min="-60" max="-60"/>
 			</item_modify>
 			<choice>
-				<text>Continue...</text>
+				<text id="_tm_text_continue"/>
                 <event load="_TM_INSTALL_REACTOR"/>
 			</choice>
 		</event>
 	</choice>
     <choice req="battery" lvl="0" max_lvl="0" blue="false" hidden="true">
-		<text>This upgrade is unavailable. Battery system is not installed.</text>
+		<text id="_tm_text_detail_breeder_reactor_1"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
     <choice>
-		<text>Nevermind</text>
+		<text id="_tm_text_nevermind"/>
         <event load="_TM_UPGRADE_MENU_LOAD"/>
 	</choice>
 </event>
 
 <event name="_TM_INSTALL_STUNNER"/>
 <event name="_TM_UPGRADE_STUNNER">
-    <text>You are about to install the Temporal Stun.
-	[Effects: Enemy crew inside a system room with temporal effect will be stunned. Enemy ship will also have this effect]</text>
+    <text id="_tm_text_detail_temporal_stun"/>
     <choice req="__TM__temporal_stun" lvl="0" blue="false">
-		<text>Perform the upgrade</text>
+		<text id="_tm_text_perfrom_upgrade"/>
 		<event>
-			<text>You install the upgrade.</text>
+			<text id="_tm_text_install_upgrade"/>
 			<item_modify>
 				<item type="scrap" min="-60" max="-60"/>
 			</item_modify>
 			<choice>
-				<text>Continue...</text>
+				<text id="_tm_text_continue"/>
                 <event load="_TM_INSTALL_STUNNER"/>
 			</choice>
 		</event>
 	</choice>
     <choice>
-		<text>Nevermind</text>
+		<text id="_tm_text_nevermind"/>
         <event load="_TM_UPGRADE_MENU_LOAD"/>
 	</choice>
 </event>

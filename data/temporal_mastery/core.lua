@@ -17,10 +17,10 @@ local systemSpeed = {
 
 local function checkTemporalEffects(shipMgr)
     local iShipId = shipMgr.iShipId
+    roomSpeed[iShipId] = {}
+    systemSpeed[iShipId] = {}
     local rooms = roomSpeed[iShipId]
     local systems = systemSpeed[iShipId]
-    rooms = {}
-    systems = {}
     local vRoomList = shipMgr.ship.vRoomList
     local vSystemList = shipMgr.vSystemList
     for i = 0, vSystemList:size() - 1 do
@@ -38,14 +38,19 @@ end
 script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, checkTemporalEffects)
 
 local function getTimeDilation(shipMgr, sys)
-    local speed = shipMgr.ship.vRoomList[sys:GetRoomId()].extend.timeDilation
-    if shipMgr.iShipId ~= 0 or tmConfig.player['temporal_reverser'] <= 0 then
+    local iShipId = shipMgr.iShipId
+    local speed = roomSpeed[iShipId][sys:GetRoomId()]
+    if not speed then
+        return 0
+    end
+    if iShipId ~= 0 or tmConfig.player['temporal_reverser'] <= 0 then
         return speed
     else
         return -speed
     end
 end
 
+-- Should not be used for artillery
 local function getSystemSpeed(shipMgr, sysId)
     local sys = shipMgr:GetSystem(sysId)
     if not sys or sys.iHackEffect >= 2 then
@@ -54,7 +59,7 @@ local function getSystemSpeed(shipMgr, sysId)
     return getTimeDilation(shipMgr, sys)
 end
 
-local function upgradeFactory(sysId, upgradeFunc, normalFunc)
+local function genericUpgrade(sysId, upgradeFunc, normalFunc)
     normalFunc = normalFunc or (function() end)
     return function(shipMgr)
         local sys = shipMgr:GetSystem(sysId)
@@ -152,7 +157,7 @@ local function hackingUpgrade(shipMgr, speed)
     end
 end
 
-script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, upgradeFactory(15, hackingUpgrade, function(shipMgr)
+script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, genericUpgrade(15, hackingUpgrade, function(shipMgr)
     clearBonusHacking(shipMgr.hackingSystem)
 end))
 
@@ -229,7 +234,7 @@ local function mcUpgrade(shipMgr, speed)
     end
 end
 
-script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, upgradeFactory(14, mcUpgrade, function(shipMgr)
+script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, genericUpgrade(14, mcUpgrade, function(shipMgr)
     clearBonusMC(shipMgr.mindSystem)
 end))
 
@@ -255,7 +260,7 @@ local function weaponUpgrade(shipMgr, speed)
     end
 end
 
-script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, upgradeFactory(3, weaponUpgrade))
+script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, genericUpgrade(3, weaponUpgrade))
 
 local function artilleryUpgrade(shipMgr)
     local systems = shipMgr.artillerySystems
@@ -290,21 +295,9 @@ local function chargeSuperShield(shieldSystem, delta, maxPoints)
     end
 end
 
-local function shieldUpgrade(shipMgr)
+local function shieldUpgrade(shipMgr, speed)
     local sys = shipMgr.shieldSystem
-    if not sys then
-        return
-    end
     if not sys:Powered() then
-        clearSuperTimer(sys)
-        return
-    end
-    if sys.iHackEffect >= 2 then
-        clearSuperTimer(sys)
-        return
-    end
-    local speed = getTimeDilation(shipMgr, sys)
-    if speed == 0 then
         clearSuperTimer(sys)
         return
     end
@@ -329,7 +322,9 @@ local function shieldUpgrade(shipMgr)
     chargeSuperShield(sys, delta, 5)
 end
 
-script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, shieldUpgrade)
+script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, genericUpgrade(0, shieldUpgrade, function(shipMgr)
+    clearSuperTimer(shipMgr.shieldSystem)
+end))
 
 local function oxygenUpgrade(shipMgr, speed)
     local sys = shipMgr.oxygenSystem
@@ -351,7 +346,7 @@ local function oxygenUpgrade(shipMgr, speed)
     end
 end
 
-script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, upgradeFactory(2, oxygenUpgrade))
+script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, genericUpgrade(2, oxygenUpgrade))
 
 function setBounsPower(bonus)
     local delta = bonus - tmConfig.player['bonus_power']
@@ -428,11 +423,10 @@ function speedUpLock(sys, factors, speed)
 end
 
 local function lockUpgrades(shipMgr)
-    local vSystemList = shipMgr.vSystemList
-    for i = 0, vSystemList:size() - 1 do
-        local sys = vSystemList[i]
+    local iShipId = shipMgr.iShipId
+    for roomId, speed in pairs(roomSpeed[iShipId]) do
+        local sys = shipMgr:GetSystemInRoom(roomId)
         if sys.iHackEffect < 2 then
-            local speed = getTimeDilation(shipMgr, sys)
             if speed < 0 then
                 speedUpLock(sys, tmConfig.IONLOCK_SLOWDOWN_FACTORS, speed)
             elseif speed > 0 then
@@ -461,7 +455,7 @@ local function pilotingUpgrade(shipMgr, speed)
     sys.bManned = sys.bManned or (sys.iActiveManned > 0)
 end
 
-script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, upgradeFactory(6, pilotingUpgrade))
+script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, genericUpgrade(6, pilotingUpgrade))
 
 local function sensorUpgrade(shipMgr, speed)
     local sys = shipMgr:GetSystem(7)
@@ -475,7 +469,7 @@ local function sensorUpgrade(shipMgr, speed)
     end
 end
 
-script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, upgradeFactory(7, sensorUpgrade))
+script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, genericUpgrade(7, sensorUpgrade))
 
 local function doorsUpgrade(shipMgr, speed)
     local sys = shipMgr:GetSystem(8)
@@ -489,7 +483,7 @@ local function doorsUpgrade(shipMgr, speed)
     end
 end
 
-script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, upgradeFactory(8, doorsUpgrade))
+script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, genericUpgrade(8, doorsUpgrade))
 
 local function engineUpgrade(shipMgr, augName, augValue)
     if augName ~= "FTL_BOOSTER" then
@@ -832,19 +826,11 @@ end
 script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, teleporterUpgrade)
 
 local function temporalStun(shipMgr)
-    local iShipId = shipMgr.iShipId
     if tmConfig.player['temporal_stun'] <= 0 then
         return
     end
-    local vSystemList = shipMgr.vSystemList
-    local rooms = {}
-    for i = 0, vSystemList:size() - 1 do
-        local sys = vSystemList[i]
-        local speed = getTimeDilation(shipMgr, sys)
-        if speed ~= 0 then
-            rooms[sys:GetRoomId()] = true
-        end
-    end
+    local iShipId = shipMgr.iShipId
+    local rooms = roomSpeed[iShipId]
     if not next(rooms) then
         return
     end
