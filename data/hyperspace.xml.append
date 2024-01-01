@@ -6,8 +6,8 @@
 
 <mod:findLike type="customSystems">
     <mod:findLike type="system">
-        <mod:selector id="temporal" />
-        <mod:removeTag />
+        <mod:selector id="temporal"/>
+        <mod:removeTag/>
     </mod:findLike>
 </mod:findLike>
 
@@ -17,22 +17,22 @@
             <level1>
                 <duration>10</duration>
                 <cooldown>3</cooldown>
-                <strength>2</strength>
+                <strength>1.75</strength>
             </level1>
             <level2>
                 <duration>7</duration>
                 <cooldown>4</cooldown>
-                <strength>3</strength>
+                <strength>2.5</strength>
             </level2>
             <level3>
                 <duration>5</duration>
                 <cooldown>5</cooldown>
-                <strength>4</strength>
+                <strength>3.5</strength>
             </level3>
             <level4>
                 <duration>2</duration>
                 <cooldown>6</cooldown>
-                <strength>10</strength>
+                <strength>8.75</strength>
             </level4>
         </speed>
         <slow>
@@ -44,17 +44,17 @@
             <level2>
                 <duration>15</duration>
                 <cooldown>4</cooldown>
-                <strength>0.3333</strength>
+                <strength>0.5</strength>
             </level2>
             <level3>
                 <duration>20</duration>
                 <cooldown>5</cooldown>
-                <strength>0.25</strength>
+                <strength>0.5</strength>
             </level3>
             <level4>
                 <duration>25</duration>
                 <cooldown>6</cooldown>
-                <strength>0.2</strength>
+                <strength>0.5</strength>
             </level4>
         </slow>
     </mod-append:system>

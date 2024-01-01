@@ -6,7 +6,7 @@
 	<mod-overwrite:maxPower>4</mod-overwrite:maxPower>
 	<mod-overwrite:upgradeCost>
 		<level>60</level> <!-- level 2 -->
-		<level>9999</level> <!-- level 3 -->
+		<level>9991</level> <!-- level 3 -->
 		<level>180</level> <!-- level 4 -->
 	</mod-overwrite:upgradeCost>
 	<mod-overwrite:cost>120</mod-overwrite:cost>

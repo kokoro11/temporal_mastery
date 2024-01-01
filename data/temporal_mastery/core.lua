@@ -10,17 +10,10 @@ local roomSpeed = {
     [1] = {}
 }
 
-local systemSpeed = {
-    [0] = {},
-    [1] = {}
-}
-
 local function checkTemporalEffects(shipMgr)
     local iShipId = shipMgr.iShipId
     roomSpeed[iShipId] = {}
-    systemSpeed[iShipId] = {}
     local rooms = roomSpeed[iShipId]
-    local systems = systemSpeed[iShipId]
     local vRoomList = shipMgr.ship.vRoomList
     local vSystemList = shipMgr.vSystemList
     for i = 0, vSystemList:size() - 1 do
@@ -29,8 +22,11 @@ local function checkTemporalEffects(shipMgr)
         local roomId = sys:GetRoomId()
         local speed = vRoomList[roomId].extend.timeDilation
         if speed ~= 0 then
-            rooms[roomId] = speed
-            systems[sysId] = speed
+            if iShipId ~= 0 or tmConfig.player['temporal_reverser'] <= 0 then
+                rooms[roomId] = speed
+            else
+                rooms[roomId] = -speed
+            end
         end
     end
 end
@@ -43,11 +39,7 @@ local function getTimeDilation(shipMgr, sys)
     if not speed then
         return 0
     end
-    if iShipId ~= 0 or tmConfig.player['temporal_reverser'] <= 0 then
-        return speed
-    else
-        return -speed
-    end
+    return speed
 end
 
 -- Should not be used for artillery
