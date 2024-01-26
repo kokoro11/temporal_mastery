@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FTL>
+
+<mod:findName type="event" name="START_BEACON">
+    <mod-append:eventButton name="_TM_UPGRADE_BUTTON">
+        <event load="_TM_UPGRADE_MENU"/>
+        <image>statusUI/tm_upgrade</image>
+        <customLocation x="150" y="110"/>
+        <tooltip id="_tm_text_button_tooltip"/>
+        <inactiveTooltip id="_tm_text_button_inactive"/>
+        <jumpClear>false</jumpClear>
+        <noDanger>true</noDanger>
+        <req lvl="1">temporal</req>
+        <hideInactive>true</hideInactive>
+    </mod-append:eventButton>
+</mod:findName>
+
+</FTL>

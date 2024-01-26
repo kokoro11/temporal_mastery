@@ -18,7 +18,6 @@ local function checkTemporalEffects(shipMgr)
     local vSystemList = shipMgr.vSystemList
     for i = 0, vSystemList:size() - 1 do
         local sys = vSystemList[i]
-        local sysId = sys:GetId()
         local roomId = sys:GetRoomId()
         local speed = vRoomList[roomId].extend.timeDilation
         if speed ~= 0 then
@@ -231,7 +230,7 @@ script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, genericUpgrade(14, mc
 end))
 
 local function chargeUp(weapon, speed, speedUp, slowDown, safetyMargin)
-    safetyMargin = safetyMargin or 0.1
+    safetyMargin = safetyMargin or 0.01
     local safeMaxCooldown = weapon.cooldown.second - safetyMargin
     if weapon.powered and safeMaxCooldown > 0 and weapon.cooldown.first < safeMaxCooldown then
         local cdMod = 0.0
@@ -295,7 +294,7 @@ local function shieldUpgrade(shipMgr, speed)
     end
     local fullyCharged = (sys.shields.power.first >= sys.shields.power.second)
     local power = sys:GetEffectivePower()
-    if speed < 0 or power < sys:GetMaxPower() or not fullyCharged then
+    if speed < 0 or power < sys.healthState.second or not fullyCharged then
         clearSuperTimer(sys)
         if fullyCharged then
             return
@@ -393,11 +392,11 @@ local function batteryUpgrade(shipMgr)
         sys.extend.additionalPowerLoss = sys.extend.additionalPowerLoss - speed
         return
     end
-    if speed == 0 or power < sys:GetMaxPower() or not sys.bTurnedOn then
+    if speed == 0 or not sys.bTurnedOn then
         clearPowerTimer(sys)
         return
     end
-    -- speed > 0 and power >= sys:GetMaxPower() and sys.bTurnedOn
+    -- speed > 0 and sys.bTurnedOn
     local chargeSpeed = tmConfig.BONUSPOWER_CHARGE_RATES[speed]
     local delta = Hyperspace.FPS.SpeedFactor / 16 * chargeSpeed
     chargeBounsPower(sys, delta, power * 2)
@@ -538,10 +537,9 @@ end
 
 script.on_internal_event(Defines.InternalEvents.GET_DODGE_FACTOR, dodgeUpgrade)
 
-local INT_MAX = 2147483647
 local function random_point_radius(origin, radius)
-    local r = radius * math.sqrt(Hyperspace.random32() / INT_MAX)
-    local theta = 2 * math.pi * (Hyperspace.random32() / INT_MAX)
+    local r = radius * math.sqrt(math.random())
+    local theta = 2 * math.pi * (math.random())
     return Hyperspace.Pointf(origin.x + r * math.cos(theta), origin.y + r * math.sin(theta))
 end
 
@@ -592,26 +590,17 @@ script.on_internal_event(Defines.InternalEvents.DRONE_FIRE, function(proj, drone
         end,
         ["BURST"] = function()
             -- LaserBlast* CreateBurstProjectile(WeaponBlueprint *weapon, std::string &image, bool fake, Pointf position, int space, int ownerId, Pointf target, int targetSpace, float heading);
-            --currently bugged because of Hyperspace
-            --local bp = drone.weaponBlueprint
-            --local projs = bp.miniProjectiles
-            --spaceMgr:CreateBurstProjectile(
-            --    bp,
-            --    projs[i].image,
-            --    projs[i].fake,
-            --    drone.currentLocation,
-            --    proj.currentSpace,
-            --    proj.ownerId,
-            --    random_point_radius(proj.target, 60 + bp.radius),
-            --    proj.destinationSpace,
-            --    proj.heading
-            --)
-            spaceMgr:CreateLaserBlast(
-                drone.weaponBlueprint,
+            local bp = drone.weaponBlueprint
+            local projs = bp.miniProjectiles
+            local i = math.random(0, projs:size() - 1)
+            spaceMgr:CreateBurstProjectile(
+                bp,
+                projs[i].image,
+                projs[i].fake,
                 drone.currentLocation,
                 proj.currentSpace,
                 proj.ownerId,
-                random_point_radius(proj.target, 60 + drone.weaponBlueprint.radius),
+                random_point_radius(proj.target, 60 + bp.radius),
                 proj.destinationSpace,
                 proj.heading
             )
