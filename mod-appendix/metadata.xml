@@ -30,7 +30,7 @@
 			2.4.1 Hi-res Bkgs
 			1.0 for FTL 1.03.1
 	-->
-	<version><![CDATA[ 0.0.8 ]]></version>
+	<version><![CDATA[ 0.0.9 ]]></version>
 
 
 	<description>
@@ -66,14 +66,15 @@ decrease weapon charge rates (-0.5x)
 
 
 Drone:
-increase crew drones stats (x2.0, x2.86, x4.0, x10.0)
-multiply the number of space drone projectiles by temporal level (x1, x2, x3, x4)
+speed up crew drones (1.75x, 2.86x, 4.5x, 12.5x)
+speed up space drones (1.2x, 1.7x, 2.4x, 6.0x)
 /
 reduce max power by an amount equal to temporal level (-1, -2, -3, -4)
 
 
 Medbay:
-no custom effects
+(requires an internal upgrade)
+speed up all allied crew members on player's ship (1.75x, 2.86x, 4.5x, 12.5x)
 /
 no custom effects
 
@@ -98,8 +99,8 @@ reduce max power by an amount equal to temporal level (-1, -2, -3, -3)
 
 
 Teleporter:
-increase crew move speed
-when teleporter level is equal to 4, crew can teleport anywhere
+(requires an internal upgrade)
+speed up all allied crew members on enemy ship (1.75x, 2.86x, 4.5x, 12.5x)
 /
 reduce max power by an amount equal to half of temporal level (-1, -1, -2, -2)
 
@@ -138,6 +139,7 @@ reduce max power by an amount equal to half of temporal level (-1, -1, -2, -2)
 Hacking:
 allow cluster hacking when hacking is active
 the area of cluster hacking is equal to temporal level
+(costs 1 drone part for each extra system hacked)
 /
 reduce max power by an amount equal to half of temporal level (-1, -1, -2, -2)
 

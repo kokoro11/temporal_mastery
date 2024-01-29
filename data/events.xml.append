@@ -29,6 +29,10 @@
 
 <event name="_TM_UPGRADE_MENU">
 	<text id="_tm_text_menu"/>
+    <choice>
+		<text id="_tm_text_nevermind"/>
+        <event/>
+	</choice>
     <!-- Level 3 -->
     <choice req="temporal" lvl="1" max_lvl="1" blue="false" hidden="true">
         <text id="_tm_text_menu_level3_1"/>
@@ -43,45 +47,98 @@
         <event load="_TM_OPTION_INVALID"/>
     </choice>
     <!-- Trick Room -->
-	<choice req="__TM__temporal_reverser" lvl="0" max_lvl="0" blue="false">
+	<choice req="_tm_temporal_reverser" lvl="0" max_lvl="0" blue="false">
 		<text id="_tm_text_menu_trick_room_1"/>
 		<event load="_TM_UPGRADE_REVERSE"/>
 	</choice>
-    <choice req="__TM__temporal_reverser" lvl="1" blue="false" hidden="true">
+    <choice req="_tm_temporal_reverser" lvl="1" blue="false" hidden="true">
 		<text id="_tm_text_menu_trick_room_2"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
-    <!-- Breeder Reactor -->
-    <choice req="__TM__bpgen_speed" lvl="0" max_lvl="0" blue="false">
-		<text id="_tm_text_menu_breeder_reactor_1"/>
-		<event load="_TM_UPGRADE_REACTOR"/>
-	</choice>
-    <choice req="__TM__bpgen_speed" lvl="1" max_lvl="1" blue="false">
-		<text id="_tm_text_menu_breeder_reactor_2"/>
-		<event load="_TM_UPGRADE_REACTOR"/>
-	</choice>
-    <choice req="__TM__bpgen_speed" lvl="2" blue="false" hidden="true">
-		<text id="_tm_text_menu_breeder_reactor_3"/>
-		<event load="_TM_OPTION_INVALID"/>
-	</choice>
     <!-- Temporal Stun -->
-    <choice req="__TM__temporal_stun" lvl="0" max_lvl="0" blue="false">
+    <choice req="_tm_temporal_stun" lvl="0" max_lvl="0" blue="false">
 		<text id="_tm_text_menu_temporal_stun_1"/>
 		<event load="_TM_UPGRADE_STUNNER"/>
 	</choice>
-    <choice req="__TM__temporal_stun" lvl="1" blue="false" hidden="true">
+    <choice req="_tm_temporal_stun" lvl="1" blue="false" hidden="true">
 		<text id="_tm_text_menu_temporal_stun_2"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
-    <choice>
-		<text id="_tm_text_nevermind"/>
-        <event/>
+
+    <!-- Temporal FTL Booster -->
+    <choice req="_tm_temporal_ftl" lvl="0" max_lvl="0" blue="false">
+		<text id="_tm_text_menu_temporal_ftl_1"/>
+		<event load="_TM_UPGRADE_TEMPORAL_FTL"/>
 	</choice>
+    <choice req="_tm_temporal_ftl" lvl="1" blue="false" hidden="true">
+		<text id="_tm_text_menu_temporal_ftl_2"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <!-- Infinite Shield -->
+    <choice req="_tm_infinite_shield" lvl="0" max_lvl="0" blue="false">
+		<text id="_tm_text_menu_infinite_shield_1"/>
+		<event load="_TM_UPGRADE_INFINITE_SHIELD"/>
+	</choice>
+    <choice req="_tm_infinite_shield" lvl="1" blue="false" hidden="true">
+		<text id="_tm_text_menu_infinite_shield_2"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <!-- Selective Acceleration -->
+    <choice req="_tm_selective_acceleration" lvl="0" max_lvl="0" blue="false">
+		<text id="_tm_text_menu_selective_acceleration_1"/>
+		<event load="_TM_UPGRADE_SELECTIVE_ACCELERATION"/>
+	</choice>
+    <choice req="_tm_selective_acceleration" lvl="1" blue="false" hidden="true">
+		<text id="_tm_text_menu_selective_acceleration_2"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <!-- Drone Amplifier -->
+    <choice req="_tm_drone_amplifier" lvl="0" max_lvl="0" blue="false">
+		<text id="_tm_text_menu_drone_amplifier_1"/>
+		<event load="_TM_UPGRADE_DRONE_AMPLIFIER"/>
+	</choice>
+    <choice req="_tm_drone_amplifier" lvl="1" blue="false" hidden="true">
+		<text id="_tm_text_menu_drone_amplifier_2"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <!-- Temporal Bot Dispersal -->
+    <choice req="_tm_temporal_bot" lvl="0" max_lvl="0" blue="false">
+		<text id="_tm_text_menu_temporal_bot_1"/>
+		<event load="_TM_UPGRADE_TEMPORAL_BOT"/>
+	</choice>
+    <choice req="_tm_temporal_bot" lvl="1" blue="false" hidden="true">
+		<text id="_tm_text_menu_temporal_bot_2"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <!-- Temporal Bot Teleporter -->
+    <choice req="_tm_temporal_teleporter" lvl="0" max_lvl="0" blue="false">
+		<text id="_tm_text_menu_temporal_teleporter_1"/>
+		<event load="_TM_UPGRADE_TEMPORAL_TELEPORTER"/>
+	</choice>
+    <choice req="_tm_temporal_teleporter" lvl="1" blue="false" hidden="true">
+		<text id="_tm_text_menu_temporal_teleporter_2"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <!-- Breeder Reactor -->
+    <choice req="_tm_bpgen_speed" lvl="0" max_lvl="0" blue="false">
+		<text id="_tm_text_menu_breeder_reactor_1"/>
+		<event load="_TM_UPGRADE_REACTOR"/>
+	</choice>
+    <choice req="_tm_bpgen_speed" lvl="1" max_lvl="1" blue="false">
+		<text id="_tm_text_menu_breeder_reactor_2"/>
+		<event load="_TM_UPGRADE_REACTOR"/>
+	</choice>
+    <choice req="_tm_bpgen_speed" lvl="2" blue="false" hidden="true">
+		<text id="_tm_text_menu_breeder_reactor_3"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    
 </event>
 
+<!-- Level 3 -->
 <event name="_TM_UPGRADE_LEVEL3">
 	<text id="_tm_text_detail_level3"/>
-	<choice req="__TM__temporal_reverser" lvl="0" max_lvl="0" blue="false">
+	<choice req="_tm_temporal_reverser" lvl="0" max_lvl="0" blue="false">
 		<text id="_tm_text_perfrom_upgrade"/>
 		<event>
 			<text id="_tm_text_install_upgrade"/>
@@ -95,7 +152,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="__TM__temporal_reverser" lvl="1" blue="false" hidden="true">
+	<choice req="_tm_temporal_reverser" lvl="1" blue="false" hidden="true">
 		<text id="_tm_text_detail_level3_1"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
@@ -105,6 +162,7 @@
 	</choice>
 </event>
 
+<!-- Trick Room -->
 <event name="_TM_INSTALL_REVERSER"/>
 <event name="_TM_UPGRADE_REVERSE">
     <text id="_tm_text_detail_trick_room"/>
@@ -131,6 +189,7 @@
 	</choice>
 </event>
 
+<!-- Breeder Reactor -->
 <event name="_TM_INSTALL_REACTOR"/>
 <event name="_TM_UPGRADE_REACTOR">
     <text id="_tm_text_detail_breeder_reactor"/>
@@ -139,7 +198,7 @@
 		<event>
 			<text id="_tm_text_install_upgrade"/>
 			<item_modify>
-				<item type="scrap" min="-60" max="-60"/>
+				<item type="scrap" min="-30" max="-30"/>
 			</item_modify>
 			<choice>
 				<text id="_tm_text_continue"/>
@@ -157,10 +216,11 @@
 	</choice>
 </event>
 
+<!-- Temporal Stun -->
 <event name="_TM_INSTALL_STUNNER"/>
 <event name="_TM_UPGRADE_STUNNER">
     <text id="_tm_text_detail_temporal_stun"/>
-    <choice req="__TM__temporal_stun" lvl="0" blue="false">
+    <choice req="_tm_temporal_stun" lvl="0" blue="false">
 		<text id="_tm_text_perfrom_upgrade"/>
 		<event>
 			<text id="_tm_text_install_upgrade"/>
@@ -172,6 +232,168 @@
                 <event load="_TM_INSTALL_STUNNER"/>
 			</choice>
 		</event>
+	</choice>
+    <choice>
+		<text id="_tm_text_nevermind"/>
+        <event load="_TM_UPGRADE_MENU_LOAD"/>
+	</choice>
+</event>
+
+<!-- Drone Amplifier -->
+<event name="_TM_INSTALL_DRONE_AMPLIFIER"/>
+<event name="_TM_UPGRADE_DRONE_AMPLIFIER">
+    <text id="_tm_text_detail_drone_amplifier"/>
+    <choice req="drones" lvl="1" blue="false">
+		<text id="_tm_text_perfrom_upgrade"/>
+		<event>
+			<text id="_tm_text_install_upgrade"/>
+			<item_modify>
+				<item type="scrap" min="-60" max="-60"/>
+			</item_modify>
+			<choice>
+				<text id="_tm_text_continue"/>
+                <event load="_TM_INSTALL_DRONE_AMPLIFIER"/>
+			</choice>
+		</event>
+	</choice>
+    <choice req="drones" lvl="0" max_lvl="0" blue="false" hidden="true">
+		<text id="_tm_text_detail_drone_amplifier_1"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice>
+		<text id="_tm_text_nevermind"/>
+        <event load="_TM_UPGRADE_MENU_LOAD"/>
+	</choice>
+</event>
+
+<!-- Temporal Bot Dispersal -->
+<event name="_TM_INSTALL_TEMPORAL_BOT"/>
+<event name="_TM_UPGRADE_TEMPORAL_BOT">
+    <text id="_tm_text_detail_temporal_bot"/>
+    <choice req="medbay" lvl="3" blue="false">
+		<text id="_tm_text_perfrom_upgrade"/>
+		<event>
+			<text id="_tm_text_install_upgrade"/>
+			<item_modify>
+				<item type="scrap" min="-70" max="-70"/>
+			</item_modify>
+			<choice>
+				<text id="_tm_text_continue"/>
+                <event load="_TM_INSTALL_TEMPORAL_BOT"/>
+			</choice>
+		</event>
+	</choice>
+    <choice req="medbay" lvl="0" max_lvl="2" blue="false" hidden="true">
+		<text id="_tm_text_detail_temporal_bot_1"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice>
+		<text id="_tm_text_nevermind"/>
+        <event load="_TM_UPGRADE_MENU_LOAD"/>
+	</choice>
+</event>
+
+<!-- Temporal Bot Teleporter -->
+<event name="_TM_INSTALL_TEMPORAL_TELEPORTER"/>
+<event name="_TM_UPGRADE_TEMPORAL_TELEPORTER">
+    <text id="_tm_text_detail_temporal_teleporter"/>
+    <choice req="teleporter" lvl="4" blue="false">
+		<text id="_tm_text_perfrom_upgrade"/>
+		<event>
+			<text id="_tm_text_install_upgrade"/>
+			<item_modify>
+				<item type="scrap" min="-90" max="-90"/>
+			</item_modify>
+			<choice>
+				<text id="_tm_text_continue"/>
+                <event load="_TM_INSTALL_TEMPORAL_TELEPORTER"/>
+			</choice>
+		</event>
+	</choice>
+    <choice req="teleporter" lvl="0" max_lvl="3" blue="false" hidden="true">
+		<text id="_tm_text_detail_temporal_teleporter_1"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice>
+		<text id="_tm_text_nevermind"/>
+        <event load="_TM_UPGRADE_MENU_LOAD"/>
+	</choice>
+</event>
+
+<!-- Selective Acceleration -->
+<event name="_TM_INSTALL_SELECTIVE_ACCELERATION"/>
+<event name="_TM_UPGRADE_SELECTIVE_ACCELERATION">
+    <text id="_tm_text_detail_selective_acceleration"/>
+    <choice req="weapons" lvl="1" blue="false">
+		<text id="_tm_text_perfrom_upgrade"/>
+		<event>
+			<text id="_tm_text_install_upgrade"/>
+			<item_modify>
+				<item type="scrap" min="-60" max="-60"/>
+			</item_modify>
+			<choice>
+				<text id="_tm_text_continue"/>
+                <event load="_TM_INSTALL_SELECTIVE_ACCELERATION"/>
+			</choice>
+		</event>
+	</choice>
+    <choice req="weapons" lvl="0" max_lvl="0" blue="false" hidden="true">
+		<text id="_tm_text_detail_selective_acceleration_1"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice>
+		<text id="_tm_text_nevermind"/>
+        <event load="_TM_UPGRADE_MENU_LOAD"/>
+	</choice>
+</event>
+
+<!-- Temporal FTL Booster -->
+<event name="_TM_INSTALL_TEMPORAL_FTL"/>
+<event name="_TM_UPGRADE_TEMPORAL_FTL">
+    <text id="_tm_text_detail_temporal_ftl"/>
+    <choice req="engines" lvl="1" blue="false">
+		<text id="_tm_text_perfrom_upgrade"/>
+		<event>
+			<text id="_tm_text_install_upgrade"/>
+			<item_modify>
+				<item type="scrap" min="-50" max="-50"/>
+			</item_modify>
+			<choice>
+				<text id="_tm_text_continue"/>
+                <event load="_TM_INSTALL_TEMPORAL_FTL"/>
+			</choice>
+		</event>
+	</choice>
+    <choice req="engines" lvl="0" max_lvl="0" blue="false" hidden="true">
+		<text id="_tm_text_detail_temporal_ftl_1"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice>
+		<text id="_tm_text_nevermind"/>
+        <event load="_TM_UPGRADE_MENU_LOAD"/>
+	</choice>
+</event>
+
+<!-- Infinite Shield -->
+<event name="_TM_INSTALL_INFINITE_SHIELD"/>
+<event name="_TM_UPGRADE_INFINITE_SHIELD">
+    <text id="_tm_text_detail_infinite_shield"/>
+    <choice req="shields" lvl="1" blue="false">
+		<text id="_tm_text_perfrom_upgrade"/>
+		<event>
+			<text id="_tm_text_install_upgrade"/>
+			<item_modify>
+				<item type="scrap" min="-100" max="-100"/>
+			</item_modify>
+			<choice>
+				<text id="_tm_text_continue"/>
+                <event load="_TM_INSTALL_INFINITE_SHIELD"/>
+			</choice>
+		</event>
+	</choice>
+    <choice req="shields" lvl="0" max_lvl="0" blue="false" hidden="true">
+		<text id="_tm_text_detail_infinite_shield_1"/>
+		<event load="_TM_OPTION_INVALID"/>
 	</choice>
     <choice>
 		<text id="_tm_text_nevermind"/>

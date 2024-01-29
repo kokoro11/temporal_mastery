@@ -1,58 +1,83 @@
 
-mods.tmConfig = {}
+mods.temporal = {}
 
-local tmConfig = mods.tmConfig
+mods.temporal.config = {}
 
-tmConfig.TEMPORAL_SPEEDUP_DURATIONS = {10, 7, 5, 2}
-tmConfig.TEMPORAL_SLOWDOWN_DURATIONS = {10, 15, 20, 25}
+local config = mods.temporal.config
 
-tmConfig.WEAPON_SPEEDUP_FACTORS = {0.25, 0.7, 1.5, 5.0}
-tmConfig.WEAPON_SLOWDOWN_FACTORS = {-0.5, -0.5, -0.5, -0.5}
+config.TEMPORAL_SPEEDUP_DURATIONS = {10, 7, 5, 2}
+config.TEMPORAL_SLOWDOWN_DURATIONS = {10, 15, 20, 25}
 
-tmConfig.ARTILLERY_SPEEDUP_FACTORS = {0.5, 1.4, 3.0, 10.0}
-tmConfig.ARTILLERY_SLOWDOWN_FACTORS = {-0.75, -0.75, -0.75, -0.75}
+config.WEAPON_SPEEDUP_RATES = {0.25, 0.7, 1.5, 5.0}
+config.WEAPON_SLOWDOWN_RATES = {-0.5, -0.5, -0.5, -0.5}
 
-tmConfig.SHIELD_SPEEDUP_FACTORS = {0.4, 1.0, 2.0, 6.5}
-tmConfig.SHIELD_SLOWDOWN_FACTORS = {-0.5, -0.5, -0.5, -0.5}
+config.ARTILLERY_SPEEDUP_RATES = {0.5, 1.4, 3.0, 10.0}
+config.ARTILLERY_SLOWDOWN_RATES = {-0.75, -0.75, -0.75, -0.75}
 
-tmConfig.SUPERSHIELD_CHARGE_RATES = {0.15, 0.35, 0.7, 2.25}
+config.SHIELD_SPEEDUP_RATES = {0.4, 1.0, 2.0, 6.5}
+config.SHIELD_SLOWDOWN_RATES = {-0.5, -0.5, -0.5, -0.5}
 
-tmConfig.OXYGEN_SPEEDUP_FACTORS = {1.0, 3.0, 7.0, 15.0}
-tmConfig.OXYGEN_SLOWDOWN_FACTORS = {-0.75, -0.88, -0.94, -0.97}
+config.SUPERSHIELD_CHARGE_RATES = {0.15, 0.35, 0.7, 2.25}
 
-tmConfig.BONUSPOWER_CHARGE_RATES = {0.15, 0.35, 0.7, 2.25}
+config.OXYGEN_SPEEDUP_RATES = {1.0, 3.0, 7.0, 15.0}
+config.OXYGEN_SLOWDOWN_RATES = {-0.75, -0.88, -0.94, -0.97}
 
-tmConfig.IONLOCK_SPEEDUP_FACTORS = {0.5, 1.43, 3.0, 10.0}
-tmConfig.IONLOCK_SLOWDOWN_FACTORS = {-0.5, -0.5, -0.5, -0.5}
+config.BONUSPOWER_CHARGE_RATES = {0.15, 0.35, 0.7, 2.25}
 
-tmConfig.FTL_SPEEDUP_FACTORS = {0.28, 1.56, 4.12, 9.24}
-tmConfig.FTL_SLOWDOWN_FACTORS = {-0.5, -0.5, -0.5, -0.5}
+config.IONLOCK_SPEEDUP_RATES = {0.5, 1.43, 3.0, 10.0}
+config.IONLOCK_SLOWDOWN_RATES = {-0.5, -0.5, -0.5, -0.5}
 
-tmConfig.CREWDRONE_SPEEDUP_FACTORS = {1.75, 2.5, 3.5, 8.75}
-tmConfig.CREWDRONE_SLOWDOWN_FACTORS = {0.5, 0.5, 0.5, 0.5}
+config.FTL_SPEEDUP_RATES = {0.28, 1.56, 4.12, 9.24}
+config.FTL_SLOWDOWN_RATES = {-0.5, -0.5, -0.5, -0.5}
 
-tmConfig.TELEPORT_SPEEDUP_FACTORS = {2.0, 4.0, 8.0, 16.0}
+config.SPACEDRONE_SPEEDUP_FACTORS = {1.2, 1.7, 2.4, 6.0}
+config.CREWDRONE_SPEEDUP_FACTORS = {1.75, 2.86, 4.5, 12.5}
 
-local playerConfigList = {
+config.MEDBAY_SPEEDUP_FACTORS = {1.75, 2.86, 4.5, 12.5}
+config.TELEPORTER_SPEEDUP_FACTORS = {1.75, 2.86, 4.5, 12.5}
+
+config.player = {
     bonus_power = 0,
     temporal_reverser = 0,
     bpgen_speed = 0,
-    temporal_stun = 0
+    temporal_stun = 0,
+    drone_amplifier = 0,
+    temporal_bot = 0,
+    temporal_teleporter = 0,
+    selective_acceleration = 0,
+    temporal_ftl = 0,
+    infinite_shield = 0
 }
 
+local playerConfig = config.player
+
+local configLoaded = true
 script.on_init(function()
-    for name, _ in pairs(playerConfigList) do
-        playerConfigList[name] = Hyperspace.playerVariables['__TM__'..name]
-    end
+    configLoaded = false
 end)
 
-tmConfig.setPlayerConfig = function(name, value)
-    Hyperspace.playerVariables['__TM__'..name] = value
-    playerConfigList[name] = value
+script.on_internal_event(Defines.InternalEvents.ON_TICK, function()
+    if configLoaded then
+        return
+    end
+    for name, _ in pairs(playerConfig) do
+        playerConfig[name] = Hyperspace.playerVariables['_tm_'..name]
+    end
+    configLoaded = true
+end)
+
+config.setPlayerConfig = function(name, value)
+    Hyperspace.playerVariables['_tm_'..name] = value
+    playerConfig[name] = value
 end
 
-tmConfig.player = playerConfigList
+script.on_game_event('_TM_INSTALL_REVERSER', false, function() config.setPlayerConfig('temporal_reverser', 1) end)
+script.on_game_event('_TM_INSTALL_REACTOR', false, function() config.setPlayerConfig('bpgen_speed', playerConfig.bpgen_speed + 1) end)
+script.on_game_event('_TM_INSTALL_STUNNER', false, function() config.setPlayerConfig('temporal_stun', 1) end)
 
-script.on_game_event('_TM_INSTALL_REVERSER', false, function() tmConfig.setPlayerConfig('temporal_reverser', 1) end)
-script.on_game_event('_TM_INSTALL_REACTOR', false, function() tmConfig.setPlayerConfig('bpgen_speed', playerConfigList.bpgen_speed + 1) end)
-script.on_game_event('_TM_INSTALL_STUNNER', false, function() tmConfig.setPlayerConfig('temporal_stun', 1) end)
+script.on_game_event('_TM_INSTALL_DRONE_AMPLIFIER', false, function() config.setPlayerConfig('drone_amplifier', 1) end)
+script.on_game_event('_TM_INSTALL_TEMPORAL_BOT', false, function() config.setPlayerConfig('temporal_bot', 1) end)
+script.on_game_event('_TM_INSTALL_TEMPORAL_TELEPORTER', false, function() config.setPlayerConfig('temporal_teleporter', 1) end)
+script.on_game_event('_TM_INSTALL_SELECTIVE_ACCELERATION', false, function() config.setPlayerConfig('selective_acceleration', 1) end)
+script.on_game_event('_TM_INSTALL_TEMPORAL_FTL', false, function() config.setPlayerConfig('temporal_ftl', 1) end)
+script.on_game_event('_TM_INSTALL_INFINITE_SHIELD', false, function() config.setPlayerConfig('infinite_shield', 1) end)

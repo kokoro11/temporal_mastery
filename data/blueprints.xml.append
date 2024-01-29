@@ -12,4 +12,13 @@
 	<mod-overwrite:cost>120</mod-overwrite:cost>
 </mod:findName>
 
+<augBlueprint name="_TM_AUG_SPACE_DRONE_BOOSTER">
+    <title id="_tm_text_aug_space_drone_booster_title"/>
+    <desc id="_tm_text_aug_space_drone_booster_desc"/>
+    <cost>80</cost>
+    <rarity>2</rarity>
+    <stackable>false</stackable>
+    <value>0.5</value>
+</augBlueprint>
+
 </FTL>

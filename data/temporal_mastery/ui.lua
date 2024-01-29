@@ -1,9 +1,9 @@
 
-if not mods.tmConfig then
+if not(mods.temporal and mods.temporal.config) then
     error("Temporal Mastery scripts are loaded in wrong order.")
 end
 
-local tmConfig = mods.tmConfig
+local tmConfig = mods.temporal.config
 
 local blackColor = Graphics.GL_Color(0 / 255, 0 / 255, 0 / 255, 1.0)
 local whiteColor = Graphics.GL_Color(255 / 255, 255 / 255, 255 / 255, 1.0)
@@ -16,7 +16,7 @@ local function renderEnergyShieldCharger(playerShip)
     if not shieldSystem then
         return
     end
-    local superTimer = shieldSystem.table.__TM__superTimer
+    local superTimer = shieldSystem.table._tm_superTimer
     if not superTimer or superTimer <= 0 then
         return
     end
@@ -30,7 +30,7 @@ local function renderBonusEnergyCharger(playerShip)
         return
     end
 
-    local powerTimer = batterySystem.table.__TM__powerTimer
+    local powerTimer = batterySystem.table._tm_powerTimer
     if powerTimer and powerTimer > 0 then
         Graphics.CSurface.GL_DrawRectOutline(12, 694, 28, 7, greenColor, 1)
         Graphics.CSurface.GL_DrawRect(14, 696, 24 * powerTimer, 3, goldColor)

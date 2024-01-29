@@ -2,6 +2,12 @@
 
 <FTL>
 
+<text name="_tm_text_aug_space_drone_booster_title">Space Drone Booster</text>
+<text name="_tm_text_aug_space_drone_booster_title" language="zh-Hans">太空无人机增压器</text>
+
+<text name="_tm_text_aug_space_drone_booster_desc">Increase the speed of space drones by 50%.</text>
+<text name="_tm_text_aug_space_drone_booster_desc" language="zh-Hans">太空无人机的速度提高50%。</text>
+
 <text name="_tm_text_button_tooltip">Install internal upgrades for the temporal system.</text>
 <text name="_tm_text_button_tooltip" language="zh-Hans">为时流系统安装内部升级</text>
 
@@ -17,6 +23,8 @@
 <text name="_tm_text_continue">Continue...</text>
 <text name="_tm_text_continue" language="zh-Hans">继续</text>
 
+<!-- Menu -->
+
 <text name="_tm_text_menu">Which upgrade for the temporal system would you like to install?</text>
 <text name="_tm_text_menu" language="zh-Hans">你想安装哪项升级？</text>
 
@@ -29,26 +37,64 @@
 <text name="_tm_text_menu_level3_3">Upgrade to Level 3 [INSTALLED]</text>
 <text name="_tm_text_menu_level3_3" language="zh-Hans">升级到第三级 [已安装]</text>
 
-<text name="_tm_text_menu_trick_room_1">Trick Room</text>
-<text name="_tm_text_menu_trick_room_1" language="zh-Hans">戏法空间</text>
+<text name="_tm_text_menu_trick_room_1">Trick Room (Incompatible with Level 3)</text>
+<text name="_tm_text_menu_trick_room_1" language="zh-Hans">戏法空间（与三级时流不兼容）</text>
 
 <text name="_tm_text_menu_trick_room_2">Trick Room [INSTALLED]</text>
 <text name="_tm_text_menu_trick_room_2" language="zh-Hans">戏法空间 [已安装]</text>
 
-<text name="_tm_text_menu_breeder_reactor_1">Breeder Reactor</text>
-<text name="_tm_text_menu_breeder_reactor_1" language="zh-Hans">增殖反应堆</text>
+<text name="_tm_text_menu_breeder_reactor_1">(Battery) Breeder Reactor</text>
+<text name="_tm_text_menu_breeder_reactor_1" language="zh-Hans">（电池）增殖反应堆</text>
 
-<text name="_tm_text_menu_breeder_reactor_2">Breeder Reactor [INSTALLED: 1/2]</text>
-<text name="_tm_text_menu_breeder_reactor_2" language="zh-Hans">增殖反应堆 [已安装：1/2]</text>
+<text name="_tm_text_menu_breeder_reactor_2">(Battery) Breeder Reactor [INSTALLED: 1/2]</text>
+<text name="_tm_text_menu_breeder_reactor_2" language="zh-Hans">（电池）增殖反应堆 [已安装：1/2]</text>
 
-<text name="_tm_text_menu_breeder_reactor_3">Breeder Reactor [INSTALLED: 2/2]</text>
-<text name="_tm_text_menu_breeder_reactor_3" language="zh-Hans">增殖反应堆 [已安装：2/2]</text>
+<text name="_tm_text_menu_breeder_reactor_3">(Battery) Breeder Reactor [INSTALLED: 2/2]</text>
+<text name="_tm_text_menu_breeder_reactor_3" language="zh-Hans">（电池）增殖反应堆 [已安装：2/2]</text>
 
 <text name="_tm_text_menu_temporal_stun_1">Temporal Stun</text>
 <text name="_tm_text_menu_temporal_stun_1" language="zh-Hans">时流眩晕</text>
 
 <text name="_tm_text_menu_temporal_stun_2">Temporal Stun [INSTALLED]</text>
 <text name="_tm_text_menu_temporal_stun_2" language="zh-Hans">时流眩晕 [已安装]</text>
+
+<text name="_tm_text_menu_drone_amplifier_1">(Drones) Drone Amplifier</text>
+<text name="_tm_text_menu_drone_amplifier_1" language="zh-Hans">（无人机）无人机功放器</text>
+
+<text name="_tm_text_menu_drone_amplifier_2">(Drones) Drone Amplifier [INSTALLED]</text>
+<text name="_tm_text_menu_drone_amplifier_2" language="zh-Hans">（无人机）无人机功放器 [已安装]</text>
+
+<text name="_tm_text_menu_temporal_bot_1">(Medbay) Temporal Bot Dispersal</text>
+<text name="_tm_text_menu_temporal_bot_1" language="zh-Hans">（医疗舱）纳米时流机</text>
+
+<text name="_tm_text_menu_temporal_bot_2">(Medbay) Temporal Bot Dispersal [INSTALLED]</text>
+<text name="_tm_text_menu_temporal_bot_2" language="zh-Hans">（医疗舱）纳米时流机 [已安装]</text>
+
+<text name="_tm_text_menu_temporal_teleporter_1">(Teleporter) Temporal Bot Teleporter</text>
+<text name="_tm_text_menu_temporal_teleporter_1" language="zh-Hans">（传送器）纳米时流传送器</text>
+
+<text name="_tm_text_menu_temporal_teleporter_2">(Teleporter) Temporal Bot Teleporter [INSTALLED]</text>
+<text name="_tm_text_menu_temporal_teleporter_2" language="zh-Hans">（传送器）纳米时流传送器 [已安装]</text>
+
+<text name="_tm_text_menu_selective_acceleration_1">(Weapons) Selective Acceleration</text>
+<text name="_tm_text_menu_selective_acceleration_1" language="zh-Hans">（武器）选择性加速</text>
+
+<text name="_tm_text_menu_selective_acceleration_2">(Weapons) Selective Acceleration [INSTALLED]</text>
+<text name="_tm_text_menu_selective_acceleration_2" language="zh-Hans">（武器）选择性加速 [已安装]</text>
+
+<text name="_tm_text_menu_temporal_ftl_1">(Engines) Temporal FTL Booster</text>
+<text name="_tm_text_menu_temporal_ftl_1" language="zh-Hans">（引擎）超光速引擎加速器</text>
+
+<text name="_tm_text_menu_temporal_ftl_2">(Engines) Temporal FTL Booster [INSTALLED]</text>
+<text name="_tm_text_menu_temporal_ftl_2" language="zh-Hans">（引擎）超光速引擎加速器 [已安装]</text>
+
+<text name="_tm_text_menu_infinite_shield_1">(Shields) Infinite Shield</text>
+<text name="_tm_text_menu_infinite_shield_1" language="zh-Hans">（护盾）无限护盾</text>
+
+<text name="_tm_text_menu_infinite_shield_2">(Shields) Infinite Shield [INSTALLED]</text>
+<text name="_tm_text_menu_infinite_shield_2" language="zh-Hans">（护盾）无限护盾 [已安装]</text>
+
+<!-- Details -->
 
 <text name="_tm_text_perfrom_upgrade">Perform the upgrade</text>
 <text name="_tm_text_perfrom_upgrade" language="zh-Hans">进行升级</text>
@@ -82,5 +128,74 @@
 [Effects: Enemy crew inside a system room with temporal effect will be stunned. However the enemy ship will also have this effect]</text>
 <text name="_tm_text_detail_temporal_stun" language="zh-Hans">你即将安装时流眩晕。
 [效果：敌方船员在有时流效果的系统舱室内会被眩晕。然而，敌舰也将拥有此效果。]</text>
+
+<text name="_tm_text_detail_drone_amplifier">You are about to install the Drone Amplifier.
+[Effects: Acceleration to the drone system will no longer increase the speed of space drones, but rather increase the number of projectiles fired by space drones.]
+
+Level 1 Temporal: no effect
+Level 2 Temporal: twice projectiles
+Level 3 Temporal: triple projectiles
+Level 4 Temporal: quadruple projectiles</text>
+<text name="_tm_text_detail_drone_amplifier" language="zh-Hans">你即将安装无人机功放器。
+[效果：对无人机系统加速将不再提高太空无人机的速度，而是增加太空无人机发射的投射物数量。]
+
+一级时流：无效果
+二级时流：两倍投射物
+三级时流：三倍投射物
+四级时流：四倍投射物
+</text>
+
+<text name="_tm_text_detail_drone_amplifier_1">This upgrade is unavailable. Drone system is not installed.</text>
+<text name="_tm_text_detail_drone_amplifier_1" language="zh-Hans">这项升级不可用，未安装无人机系统。</text>
+
+<text name="_tm_text_detail_temporal_bot">You are about to install the Temporal Bot Dispersal.
+[Effects: When the medbay is fully powered and being accelerated, all allied crew on the player's ship (including those being mind-controlled) gain the speed up effect of the temporal system.]</text>
+<text name="_tm_text_detail_temporal_bot" language="zh-Hans">你即将安装纳米时流机。
+[效果：医疗舱有3格供能且对医疗舱进行时流加速时，本舰所有己方船员（包括被心控的船员）获得时流系统的加速效果。]</text>
+
+<text name="_tm_text_detail_temporal_bot_1">This upgrade is unavailable. Medbay is not level 3.</text>
+<text name="_tm_text_detail_temporal_bot_1" language="zh-Hans">这项升级不可用，医疗舱未达到三级。</text>
+
+<text name="_tm_text_detail_temporal_teleporter">You are about to install the Temporal Bot Teleporter.
+[Effects: When the teleporter is fully powered and being accelerated, all allied crew on the enemy ship (including those being mind-controlled) gain the speed up effect of the temporal system.]</text>
+<text name="_tm_text_detail_temporal_teleporter" language="zh-Hans">你即将安装纳米时流传送器。
+[效果：传送器有4格供能且对传送器进行时流加速时，敌舰所有己方船员（包括被心控的船员）获得时流系统的加速效果。]</text>
+
+<text name="_tm_text_detail_temporal_teleporter_1">This upgrade is unavailable. Teleporter is not level 4.</text>
+<text name="_tm_text_detail_temporal_teleporter_1" language="zh-Hans">这项升级不可用，传送器未达到四级。</text>
+
+<text name="_tm_text_detail_selective_acceleration">You are about to install the Selective Acceleration.
+[Effects: The acceleration effect on weapons becomes twice as effective, but becomes only able to speed up the first slot.]
+
+Level 1 Temporal: +25%*2
+Level 2 Temporal: +70%*2
+Level 3 Temporal: +150%*2
+Level 4 Temporal: +500%*2</text>
+<text name="_tm_text_detail_selective_acceleration" language="zh-Hans">你即将安装选择性加速。
+[效果：对武器的加速效果变为原先的两倍，但是变得只能加速第一个槽位的武器。]
+
+一级时流：+25%*2
+二级时流：+70%*2
+三级时流：+150%*2
+四级时流：+500%*2</text>
+
+<text name="_tm_text_detail_selective_acceleration_1">This upgrade is unavailable. Weapon system is not installed.</text>
+<text name="_tm_text_detail_selective_acceleration_1" language="zh-Hans">这项升级不可用，未安装武器系统。</text>
+
+<text name="_tm_text_detail_temporal_ftl">You are about to install the Temporal FTL Booster.
+[Effects: The temporal system can now speed up or slow down the recharge rate of the ship's FTL drive.]</text>
+<text name="_tm_text_detail_temporal_ftl" language="zh-Hans">你即将安装超光速引擎加速器。
+[效果：时流系统可以加快或减慢本舰超光速引擎的充能速度。]</text>
+
+<text name="_tm_text_detail_temporal_ftl_1">This upgrade is unavailable. Engines are not installed.</text>
+<text name="_tm_text_detail_temporal_ftl_1" language="zh-Hans">这项升级不可用，未安装引擎。</text>
+
+<text name="_tm_text_detail_infinite_shield">You are about to install the Infinite Shield.
+[Effects: Accelerating the shield system will no longer increase the normal shield's recharge rate, but energy shields will no longer have a limit on their recharge and will recharge twice as fast.]</text>
+<text name="_tm_text_detail_infinite_shield" language="zh-Hans">你即将安装无限护盾。
+[效果：对护盾系统加速将不再提高正常护盾的充能速度，但是能量护盾的充能将不再有限制并且其充能速度变为两倍。]</text>
+
+<text name="_tm_text_detail_infinite_shield_1">This upgrade is unavailable. Shield system not installed.</text>
+<text name="_tm_text_detail_infinite_shield_1" language="zh-Hans">这项升级不可用，未安装护盾系统。</text>
 
 </FTL>

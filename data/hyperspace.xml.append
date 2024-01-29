@@ -2,7 +2,11 @@
 
 <FTL>
 
-<version>^1.8.0</version>
+<version>^1.9.0</version>
+
+<augments>
+    <aug name="_TM_AUG_SPACE_DRONE_BOOSTER"/>
+</augments>
 
 <mod:findLike type="customSystems">
     <mod:findLike type="system">
@@ -22,17 +26,17 @@
             <level2>
                 <duration>7</duration>
                 <cooldown>4</cooldown>
-                <strength>2.5</strength>
+                <strength>2.86</strength>
             </level2>
             <level3>
                 <duration>5</duration>
                 <cooldown>5</cooldown>
-                <strength>3.5</strength>
+                <strength>4.5</strength>
             </level3>
             <level4>
                 <duration>2</duration>
                 <cooldown>6</cooldown>
-                <strength>8.75</strength>
+                <strength>12.5</strength>
             </level4>
         </speed>
         <slow>
