@@ -6,6 +6,12 @@
 
 <augments>
     <aug name="_TM_AUG_SPACE_DRONE_BOOSTER"/>
+    <aug name="_TM_AUG_INFSHIELD">
+        <superShield>
+            <value>0</value>
+            <add>99</add>
+        </superShield>
+    </aug>
 </augments>
 
 <mod:findLike type="customSystems">

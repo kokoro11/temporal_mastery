@@ -16,9 +16,17 @@
     <title id="_tm_text_aug_space_drone_booster_title"/>
     <desc id="_tm_text_aug_space_drone_booster_desc"/>
     <cost>80</cost>
-    <rarity>2</rarity>
+    <rarity>3</rarity>
     <stackable>false</stackable>
     <value>0.5</value>
+</augBlueprint>
+
+<augBlueprint name="_TM_AUG_INFSHIELD">
+    <title>_TM_AUG_INFSHIELD</title>
+    <desc id="_tm_text_wrong"/>
+    <cost>0</cost>
+    <rarity>0</rarity>
+    <stackable>false</stackable>
 </augBlueprint>
 
 </FTL>

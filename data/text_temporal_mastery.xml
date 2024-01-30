@@ -2,6 +2,9 @@
 
 <FTL>
 
+<text name="_tm_text_wrong">You should never see this</text>
+<text name="_tm_text_wrong" language="zh-Hans">你应该不会看到这个</text>
+
 <text name="_tm_text_aug_space_drone_booster_title">Space Drone Booster</text>
 <text name="_tm_text_aug_space_drone_booster_title" language="zh-Hans">太空无人机增压器</text>
 

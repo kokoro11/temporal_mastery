@@ -298,12 +298,24 @@ local function chargeSuperShield(shieldSystem, delta, maxPoints)
     end
 end
 
-script.on_internal_event(Defines.InternalEvents.JUMP_ARRIVE, function(shipMgr)
-    local sys = shipMgr.shieldSystem
-    if not sys then
+local infshieldHp = 99
+script.on_internal_event(Defines.InternalEvents.CONSTRUCT_SHIP_MANAGER, function(shipMgr)
+    if shipMgr.iShipId == 1 then
+        local sys = Hyperspace.ships.player.shieldSystem
+        if sys and tmConfig.player['infinite_shield'] > 0 then
+            sys.shields.power.super.first = math.max(sys.shields.power.super.first - infshieldHp, 0)
+        end
+    end
+end)
+
+script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, function(shipMgr)
+    if shipMgr.iShipId ~= 0 or tmConfig.player['infinite_shield'] <= 0 then
         return
     end
-    sys.shields.power.super.second = sys.shields.power.super.first
+    local sys = Hyperspace.ships.player.shieldSystem
+    if sys then
+        sys.shields.power.super.second = math.max(sys.shields.power.super.first, 5)
+    end
 end)
 
 local function shieldUpgrade(shipMgr, speed)

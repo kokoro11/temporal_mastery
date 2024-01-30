@@ -375,7 +375,9 @@
 </event>
 
 <!-- Infinite Shield -->
-<event name="_TM_INSTALL_INFINITE_SHIELD"/>
+<event name="_TM_INSTALL_INFINITE_SHIELD">
+    <hiddenAug>_TM_AUG_INFSHIELD</hiddenAug>
+</event>
 <event name="_TM_UPGRADE_INFINITE_SHIELD">
     <text id="_tm_text_detail_infinite_shield"/>
     <choice req="shields" lvl="1" blue="false">
