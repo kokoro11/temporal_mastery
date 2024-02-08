@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FTL>
+
+<mod:findName type="event" name="STORAGE_CHECK_BUTTON">
+    <mod-append:choice req="pilot" lvl="0">
+        <text id="_tm_text_menu_settings"/>
+        <event load="_TM_SETTINGS"/>
+    </mod-append:choice>
+</mod:findName>
+
+<mod:findName type="event" name="STORAGE_CHECK_SYSTEM">
+    <mod-append:choice req="temporal" lvl="1" blue="false">
+        <text id="_tm_text_temporal_system"/>
+        <event load="_TM_UPGRADE_MENU"/>
+    </mod-append:choice>
+</mod:findName>
+
+</FTL>

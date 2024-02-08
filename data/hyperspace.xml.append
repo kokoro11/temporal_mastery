@@ -6,12 +6,23 @@
 
 <augments>
     <aug name="_TM_AUG_SPACE_DRONE_BOOSTER"/>
+    <aug name="_TM_AUG_ANCIENT_DRONE_BOOSTER"/>
     <aug name="_TM_AUG_INFSHIELD">
         <superShield>
             <value>0</value>
             <add>99</add>
         </superShield>
     </aug>
+    <aug name="_TM_AUG_TEMPORAL_STUN"/>
+    <aug name="_TM_AUG_OVERCLOCKER_MK0"/>
+    <aug name="_TM_AUG_OVERCLOCKER"/>
+    <aug name="_TM_AUG_OVERCLOCKER_MK2"/>
+    <aug name="_TM_AUG_OVERCLOCKER_MK3"/>
+    <aug name="_TM_AUG_OVERCLOCKER_DEV"/>
+    <aug name="_TM_AUG_ION_SPEEDUP"/>
+    <aug name="_TM_AUG_MIND_SPEEDUP"/>
+    <aug name="_TM_AUG_HACKING_SPEEDUP"/>
+    <aug name="_TM_AUG_CREW_SPEEDUP"/>
 </augments>
 
 <mod:findLike type="customSystems">
@@ -72,7 +83,11 @@
 
 <mod:findLike type="scripts" limit="1">
     <mod-append:script>data/temporal_mastery/config.lua</mod-append:script>
+    <mod-append:script>data/temporal_mastery/systems.lua</mod-append:script>
     <mod-append:script>data/temporal_mastery/core.lua</mod-append:script>
+    <mod-append:script>data/temporal_mastery/augments.lua</mod-append:script>
+    <mod-append:script>data/temporal_mastery/enemy_configs.lua</mod-append:script>
+    <mod-append:script>data/temporal_mastery/text_tooltips.lua</mod-append:script>
     <mod-append:script>data/temporal_mastery/ui.lua</mod-append:script>
 </mod:findLike>
 

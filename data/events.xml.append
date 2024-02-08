@@ -33,6 +33,10 @@
 		<text id="_tm_text_nevermind"/>
         <event/>
 	</choice>
+    <choice req="pilot" lvl="0">
+        <text id="_tm_text_menu_settings"/>
+        <event load="_TM_SETTINGS"/>
+    </choice>
     <!-- Level 3 -->
     <choice req="temporal" lvl="1" max_lvl="1" blue="false" hidden="true">
         <text id="_tm_text_menu_level3_1"/>
@@ -55,7 +59,7 @@
 		<text id="_tm_text_menu_trick_room_2"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
-    <!-- Temporal Stun -->
+    <!-- Temporal Stun
     <choice req="_tm_temporal_stun" lvl="0" max_lvl="0" blue="false">
 		<text id="_tm_text_menu_temporal_stun_1"/>
 		<event load="_TM_UPGRADE_STUNNER"/>
@@ -63,7 +67,7 @@
     <choice req="_tm_temporal_stun" lvl="1" blue="false" hidden="true">
 		<text id="_tm_text_menu_temporal_stun_2"/>
 		<event load="_TM_OPTION_INVALID"/>
-	</choice>
+	</choice> -->
 
     <!-- Temporal FTL Booster -->
     <choice req="_tm_temporal_ftl" lvl="0" max_lvl="0" blue="false">
@@ -119,6 +123,24 @@
 		<text id="_tm_text_menu_temporal_teleporter_2"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
+    <!-- Multi-person Mind Control -->
+    <choice req="_tm_multi_mc" lvl="0" max_lvl="0" blue="false">
+		<text id="_tm_text_menu_multi_mc_1"/>
+		<event load="_TM_UPGRADE_MULTI_MC"/>
+	</choice>
+    <choice req="_tm_multi_mc" lvl="1" blue="false" hidden="true">
+		<text id="_tm_text_menu_multi_mc_2"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <!-- Hacking Surge -->
+    <choice req="_tm_hacking_surge" lvl="0" max_lvl="0" blue="false">
+		<text id="_tm_text_menu_hacking_surge_1"/>
+		<event load="_TM_UPGRADE_HACKING_SURGE"/>
+	</choice>
+    <choice req="_tm_hacking_surge" lvl="1" blue="false" hidden="true">
+		<text id="_tm_text_menu_hacking_surge_2"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
     <!-- Breeder Reactor -->
     <choice req="_tm_bpgen_speed" lvl="0" max_lvl="0" blue="false">
 		<text id="_tm_text_menu_breeder_reactor_1"/>
@@ -132,7 +154,81 @@
 		<text id="_tm_text_menu_breeder_reactor_3"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
-    
+</event>
+
+<!-- Settings -->
+<event name="_TM_SETTINGS">
+    <text id="_tm_text_detail_settings"/>
+    <choice>
+		<text id="_tm_text_nevermind"/>
+        <event/>
+	</choice>
+    <choice req="_tm_difficulty" lvl="0" max_lvl="0" blue="false" hidden="true">
+		<text id="_tm_text_detail_settings_is_casual"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice req="_tm_difficulty" lvl="1" max_lvl="1" blue="false" hidden="true">
+		<text id="_tm_text_detail_settings_is_standard"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice req="_tm_difficulty" lvl="2" max_lvl="2" blue="false" hidden="true">
+		<text id="_tm_text_detail_settings_is_hard"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice req="_tm_difficulty" lvl="3" max_lvl="3" blue="false" hidden="true">
+		<text id="_tm_text_detail_settings_is_extreme"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice req="_tm_difficulty" lvl="4" max_lvl="4" blue="false" hidden="true">
+		<text id="_tm_text_detail_settings_is_unfair"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice req="_tm_difficulty" lvl="5" blue="false" hidden="true">
+		<text id="_tm_text_detail_settings_is_developer"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice>
+        <text id="_tm_text_detail_settings_set_casual"/>
+        <event>
+			<metaVariable name="_tm_difficulty" op="set" val="0"/>
+			<loadEvent>_TM_SETTINGS</loadEvent>
+		</event>
+    </choice>
+    <choice>
+        <text id="_tm_text_detail_settings_set_standard"/>
+        <event>
+			<metaVariable name="_tm_difficulty" op="set" val="1"/>
+			<loadEvent>_TM_SETTINGS</loadEvent>
+		</event>
+    </choice>
+    <choice>
+        <text id="_tm_text_detail_settings_set_hard"/>
+        <event>
+			<metaVariable name="_tm_difficulty" op="set" val="2"/>
+			<loadEvent>_TM_SETTINGS</loadEvent>
+		</event>
+    </choice>
+    <choice>
+        <text id="_tm_text_detail_settings_set_extreme"/>
+        <event>
+			<metaVariable name="_tm_difficulty" op="set" val="3"/>
+			<loadEvent>_TM_SETTINGS</loadEvent>
+		</event>
+    </choice>
+    <choice>
+        <text id="_tm_text_detail_settings_set_unfair"/>
+        <event>
+			<metaVariable name="_tm_difficulty" op="set" val="4"/>
+			<loadEvent>_TM_SETTINGS</loadEvent>
+		</event>
+    </choice>
+    <choice req="chaos_mode" lvl="1">
+        <text id="_tm_text_detail_settings_set_developer"/>
+        <event>
+			<metaVariable name="_tm_difficulty" op="set" val="20"/>
+			<loadEvent>_TM_SETTINGS</loadEvent>
+		</event>
+    </choice>
 </event>
 
 <!-- Level 3 -->
@@ -216,7 +312,7 @@
 	</choice>
 </event>
 
-<!-- Temporal Stun -->
+<!-- Temporal Stun 
 <event name="_TM_INSTALL_STUNNER"/>
 <event name="_TM_UPGRADE_STUNNER">
     <text id="_tm_text_detail_temporal_stun"/>
@@ -237,7 +333,7 @@
 		<text id="_tm_text_nevermind"/>
         <event load="_TM_UPGRADE_MENU_LOAD"/>
 	</choice>
-</event>
+</event>-->
 
 <!-- Drone Amplifier -->
 <event name="_TM_INSTALL_DRONE_AMPLIFIER"/>
@@ -270,7 +366,7 @@
 <event name="_TM_INSTALL_TEMPORAL_BOT"/>
 <event name="_TM_UPGRADE_TEMPORAL_BOT">
     <text id="_tm_text_detail_temporal_bot"/>
-    <choice req="medbay" lvl="3" blue="false">
+    <choice req="medbay" lvl="1" blue="false">
 		<text id="_tm_text_perfrom_upgrade"/>
 		<event>
 			<text id="_tm_text_install_upgrade"/>
@@ -283,7 +379,7 @@
 			</choice>
 		</event>
 	</choice>
-    <choice req="medbay" lvl="0" max_lvl="2" blue="false" hidden="true">
+    <choice req="medbay" lvl="0" max_lvl="0" blue="false" hidden="true">
 		<text id="_tm_text_detail_temporal_bot_1"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
@@ -395,6 +491,60 @@
 	</choice>
     <choice req="shields" lvl="0" max_lvl="0" blue="false" hidden="true">
 		<text id="_tm_text_detail_infinite_shield_1"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice>
+		<text id="_tm_text_nevermind"/>
+        <event load="_TM_UPGRADE_MENU_LOAD"/>
+	</choice>
+</event>
+
+<!-- Multi-person Mind Control -->
+<event name="_TM_INSTALL_MULTI_MC"/>
+<event name="_TM_UPGRADE_MULTI_MC">
+    <text id="_tm_text_detail_multi_mc"/>
+    <choice req="mind" lvl="1" blue="false">
+		<text id="_tm_text_perfrom_upgrade"/>
+		<event>
+			<text id="_tm_text_install_upgrade"/>
+			<item_modify>
+				<item type="scrap" min="-60" max="-60"/>
+			</item_modify>
+			<choice>
+				<text id="_tm_text_continue"/>
+                <event load="_TM_INSTALL_MULTI_MC"/>
+			</choice>
+		</event>
+	</choice>
+    <choice req="mind" lvl="0" max_lvl="0" blue="false" hidden="true">
+		<text id="_tm_text_detail_multi_mc_1"/>
+		<event load="_TM_OPTION_INVALID"/>
+	</choice>
+    <choice>
+		<text id="_tm_text_nevermind"/>
+        <event load="_TM_UPGRADE_MENU_LOAD"/>
+	</choice>
+</event>
+
+<!-- Hacking Surge -->
+<event name="_TM_INSTALL_HACKING_SURGE"/>
+<event name="_TM_UPGRADE_HACKING_SURGE">
+    <text id="_tm_text_detail_hacking_surge"/>
+    <choice req="hacking" lvl="1" blue="false">
+		<text id="_tm_text_perfrom_upgrade"/>
+		<event>
+			<text id="_tm_text_install_upgrade"/>
+			<item_modify>
+				<item type="scrap" min="-80" max="-80"/>
+			</item_modify>
+			<choice>
+				<text id="_tm_text_continue"/>
+                <event load="_TM_INSTALL_HACKING_SURGE"/>
+			</choice>
+		</event>
+	</choice>
+    <choice req="hacking" lvl="0" max_lvl="0" blue="false" hidden="true">
+		<text id="_tm_text_detail_hacking_surge_1"/>
 		<event load="_TM_OPTION_INVALID"/>
 	</choice>
     <choice>

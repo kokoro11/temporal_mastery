@@ -2,14 +2,137 @@
 
 <FTL>
 
+<!--
+
+<text name=""></text>
+<text name="" language="zh-Hans"></text>
+-->
+
 <text name="_tm_text_wrong">You should never see this</text>
 <text name="_tm_text_wrong" language="zh-Hans">你应该不会看到这个</text>
+
+<text name="_tm_text_temporal_system">Temporal Manipulator</text>
+<text name="_tm_text_temporal_system" language="zh-Hans">时流操纵器</text>
+
+<!-- Augments -->
 
 <text name="_tm_text_aug_space_drone_booster_title">Space Drone Booster</text>
 <text name="_tm_text_aug_space_drone_booster_title" language="zh-Hans">太空无人机增压器</text>
 
-<text name="_tm_text_aug_space_drone_booster_desc">Increase the speed of space drones by 50%.</text>
-<text name="_tm_text_aug_space_drone_booster_desc" language="zh-Hans">太空无人机的速度提高50%。</text>
+<text name="_tm_text_aug_space_drone_booster_desc">Increases the operating speed of space drones by 50%.</text>
+<text name="_tm_text_aug_space_drone_booster_desc" language="zh-Hans">太空无人机的运作速度提高50%。</text>
+
+<text name="_tm_text_aug_ancient_drone_booster_title">Ancient Drone Booster</text>
+<text name="_tm_text_aug_ancient_drone_booster_title" language="zh-Hans">远古无人机增压器</text>
+
+<text name="_tm_text_aug_ancient_drone_booster_desc">Increases the operating speed of both crew drones and space drones by 100%. Does not stack up with Space Drone Booster.</text>
+<text name="_tm_text_aug_ancient_drone_booster_desc" language="zh-Hans">可以同时将船员无人机和太空无人机的运作速度提高100%。其效果不与太空无人机增压器叠加。</text>
+
+<text name="_tm_text_aug_temporal_stun_title">Temporal Protection Field</text>
+<text name="_tm_text_aug_temporal_stun_title" language="zh-Hans">时流保护领域</text>
+
+<text name="_tm_text_aug_temporal_stun_desc">Enemy crew inside a *system room* with temporal effect on your own ship will be stunned. Crew drones are immune from this.</text>
+<text name="_tm_text_aug_temporal_stun_desc" language="zh-Hans">敌方船员在本舰上有时流效果的系统舱室内会被眩晕。船员无人机不受此效果影响。</text>
+
+<text name="_tm_text_aug_ion_speedup_title">Ion Accelerator</text>
+<text name="_tm_text_aug_ion_speedup_title" language="zh-Hans">离子加速器</text>
+
+<text name="_tm_text_aug_ion_speedup_desc">Ion effects on non-auxiliary systems (including Teleporter, Cloaking, Battery, Mind Control, Hacking, and Temporal) are speeded up by 100%.</text>
+<text name="_tm_text_aug_ion_speedup_desc" language="zh-Hans">非辅助系统（包括传送、隐形、电池、心控、黑客和时流）上的离子效果加速100%。</text>
+
+<text name="_tm_text_aug_mind_speedup_title">Hormone Manipulator</text>
+<text name="_tm_text_aug_mind_speedup_title" language="zh-Hans">荷尔蒙操纵器</text>
+
+<text name="_tm_text_aug_mind_speedup_desc">Allows your mind control system to manipulate hormones, causing the mind-controlled person to act 100% faster and have a faster metabolism.</text>
+<text name="_tm_text_aug_mind_speedup_desc" language="zh-Hans">允许你的心灵控制系统操纵荷尔蒙，使得被心灵控制者的行动速度和新陈代谢加快100%。</text>
+
+<text name="_tm_text_aug_hacking_speedup_title">Upgraded Hacking Tools</text>
+<text name="_tm_text_aug_hacking_speedup_title" language="zh-Hans">升级版黑客软件</text>
+
+<text name="_tm_text_aug_hacking_speedup_desc">Upgrades the hacking system's hacking software to version 2.0, which makes hacking 50% faster.</text>
+<text name="_tm_text_aug_hacking_speedup_desc" language="zh-Hans">将黑客系统的黑客软件升级为2.0版本，使得黑客攻击速度加快50%。</text>
+
+<text name="_tm_text_aug_crew_speedup_title">Built-in Temporal Field</text>
+<text name="_tm_text_aug_crew_speedup_title" language="zh-Hans">内置时流力场</text>
+
+<text name="_tm_text_aug_crew_speedup_desc">All crew members of this ship, whether hostile or friendly, have their act speed and metabolism accelerated by 100%.</text>
+<text name="_tm_text_aug_crew_speedup_desc" language="zh-Hans">本舰所有船员，无论敌对还是友方，其行动速度和新陈代谢都会加快100%。</text>
+
+<!-- Overclockers -->
+
+<text name="_tm_text_aug_overclocker_mk0_title">Homebrew Overclocking Software</text>
+<text name="_tm_text_aug_overclocker_mk0_title" language="zh-Hans">自制超频软件</text>
+
+<text name="_tm_text_aug_overclocker_mk0_desc">A homebrew overclocking software. It provides very limited system acceleration.
+
+[Level 0 Overclocker]
+Acceleration Level: 1
+Acceleration Duration: 10 seconds
+Cooldown Time: 50 seconds
+Power Consumption: 1</text>
+<text name="_tm_text_aug_overclocker_mk0_desc" language="zh-Hans">船员自制的超频软件。它能提供的系统加速效果十分有限。
+
+[0级超频器]
+加速等级：1级
+加速时长：10秒
+冷却时间：50秒
+能源消耗：1格</text>
+
+<text name="_tm_text_aug_overclocker_title">Portable Overclocker</text>
+<text name="_tm_text_aug_overclocker_title" language="zh-Hans">便携式系统超频器</text>
+
+<text name="_tm_text_aug_overclocker_desc">A plug and play system overclocker. Provides the same system acceleration effect as the temporal system, but does not speed up the crew.
+
+[Level 1 Overclocker]
+Acceleration Level: 2
+Acceleration Duration: 10 seconds
+Cooldown Time: 50 seconds
+Power Consumption: 2</text>
+<text name="_tm_text_aug_overclocker_desc" language="zh-Hans">一种即插即用的系统超频器。可提供与时流系统相同的系统加速效果，但不能加速船员。
+
+[1级超频器]
+加速等级：2级
+加速时长：10秒
+冷却时间：50秒
+能源消耗：2格</text>
+
+<text name="_tm_text_aug_overclocker_mk2_title">Ancient Overclocker</text>
+<text name="_tm_text_aug_overclocker_mk2_title" language="zh-Hans">远古超频系统</text>
+
+<text name="_tm_text_aug_overclocker_mk2_desc">A system overclocker from the distant past, constructed with algorithms that are incomprehensible to modern people, and more powerful than normal system overclockers.
+
+[Level 2 Overclocker]
+Acceleration Level: 2
+Acceleration Duration: 15 seconds
+Cooldown Time: 30 seconds
+Power Consumption: 3</text>
+<text name="_tm_text_aug_overclocker_mk2_desc" language="zh-Hans">来自远古的系统超频器，以现代人无法理解的算法构建的超频系统，比一般的系统超频器更为强大。
+
+[2级超频器]
+加速等级：2级
+加速时长：15秒
+冷却时间：30秒
+能源消耗：3格</text>
+
+<text name="_tm_text_aug_overclocker_mk3_title">Merchant's Overclocker</text>
+<text name="_tm_text_aug_overclocker_mk3_title" language="zh-Hans">游商的超频器</text>
+
+<text name="_tm_text_aug_overclocker_mk3_desc">This is perhaps the most powerful system overclocker you can find in the entire multiverse.
+
+[Level 3 Overclocker]
+Acceleration Level: 3
+Acceleration Duration: 5 seconds
+Cooldown Time: 25 seconds
+Power Consumption: 4</text>
+<text name="_tm_text_aug_overclocker_mk3_desc" language="zh-Hans">这也许是你能在整个多元宇宙中找到的最强大的系统超频器。
+
+[3级超频器]
+加速等级：3级
+加速时长：5秒
+冷却时间：25秒
+能源消耗：4格</text>
+
+<!-- Menu -->
 
 <text name="_tm_text_button_tooltip">Install internal upgrades for the temporal system.</text>
 <text name="_tm_text_button_tooltip" language="zh-Hans">为时流系统安装内部升级</text>
@@ -26,10 +149,56 @@
 <text name="_tm_text_continue">Continue...</text>
 <text name="_tm_text_continue" language="zh-Hans">继续</text>
 
+<!-- Settings -->
+
+<text name="_tm_text_detail_settings">[Temporal Mastery] Settings
+Here you can set the difficulty options for this mod. The difficulty options for this mod will affect the configuration of all enemy ships (yes, all).</text>
+<text name="_tm_text_detail_settings" language="zh-Hans">[时流掌控] 设置菜单
+在这里你可以设置本模组的难度选项。本模组的难度选项会对所有敌舰（是的，所有）的配置产生影响。</text>
+
+<text name="_tm_text_detail_settings_is_casual">Current difficulty level: Casual.</text>
+<text name="_tm_text_detail_settings_is_casual" language="zh-Hans">当前难度等级：休闲</text>
+
+<text name="_tm_text_detail_settings_is_standard">Current difficulty level: Standard.</text>
+<text name="_tm_text_detail_settings_is_standard" language="zh-Hans">当前难度等级：标准</text>
+
+<text name="_tm_text_detail_settings_is_hard">Current difficulty level: Hard.</text>
+<text name="_tm_text_detail_settings_is_hard" language="zh-Hans">当前难度等级：困难</text>
+
+<text name="_tm_text_detail_settings_is_extreme">Current difficulty level: Extreme.</text>
+<text name="_tm_text_detail_settings_is_extreme" language="zh-Hans">当前难度等级：极端</text>
+
+<text name="_tm_text_detail_settings_is_unfair">Current difficulty level: Unfair.</text>
+<text name="_tm_text_detail_settings_is_unfair" language="zh-Hans">当前难度等级：不公平</text>
+
+<text name="_tm_text_detail_settings_is_developer">Current difficulty level: Developer Mode.</text>
+<text name="_tm_text_detail_settings_is_developer" language="zh-Hans">当前难度等级：开发者模式</text>
+
+<text name="_tm_text_detail_settings_set_casual">Set difficulty level to Casual.</text>
+<text name="_tm_text_detail_settings_set_casual" language="zh-Hans">将难度设为休闲</text>
+
+<text name="_tm_text_detail_settings_set_standard">Set difficulty level to Standard.</text>
+<text name="_tm_text_detail_settings_set_standard" language="zh-Hans">将难度设为标准</text>
+
+<text name="_tm_text_detail_settings_set_hard">Set difficulty level to Hard.</text>
+<text name="_tm_text_detail_settings_set_hard" language="zh-Hans">将难度设为困难</text>
+
+<text name="_tm_text_detail_settings_set_extreme">Set difficulty level to Extreme.</text>
+<text name="_tm_text_detail_settings_set_extreme" language="zh-Hans">将难度设为极端</text>
+
+<text name="_tm_text_detail_settings_set_unfair">Set difficulty level to Unfair.</text>
+<text name="_tm_text_detail_settings_set_unfair" language="zh-Hans">将难度设为不公平</text>
+
+<text name="_tm_text_detail_settings_set_developer">Set difficulty level to Developer Mode.</text>
+<text name="_tm_text_detail_settings_set_developer" language="zh-Hans">将难度设为开发者模式</text>
+
 <!-- Menu -->
 
 <text name="_tm_text_menu">Which upgrade for the temporal system would you like to install?</text>
 <text name="_tm_text_menu" language="zh-Hans">你想安装哪项升级？</text>
+
+<text name="_tm_text_menu_settings">[Temporal Mastery] Settings</text>
+<text name="_tm_text_menu_settings" language="zh-Hans">[时流掌控] 设置菜单</text>
 
 <text name="_tm_text_menu_level3_1">Upgrade to Level 3 [UNAVAILABLE: system is not level 2]</text>
 <text name="_tm_text_menu_level3_1" language="zh-Hans">升级到第三级 [不可用: 系统未达到二级]</text>
@@ -55,11 +224,11 @@
 <text name="_tm_text_menu_breeder_reactor_3">(Battery) Breeder Reactor [INSTALLED: 2/2]</text>
 <text name="_tm_text_menu_breeder_reactor_3" language="zh-Hans">（电池）增殖反应堆 [已安装：2/2]</text>
 
-<text name="_tm_text_menu_temporal_stun_1">Temporal Stun</text>
+<!--<text name="_tm_text_menu_temporal_stun_1">Temporal Stun</text>
 <text name="_tm_text_menu_temporal_stun_1" language="zh-Hans">时流眩晕</text>
 
 <text name="_tm_text_menu_temporal_stun_2">Temporal Stun [INSTALLED]</text>
-<text name="_tm_text_menu_temporal_stun_2" language="zh-Hans">时流眩晕 [已安装]</text>
+<text name="_tm_text_menu_temporal_stun_2" language="zh-Hans">时流眩晕 [已安装]</text>-->
 
 <text name="_tm_text_menu_drone_amplifier_1">(Drones) Drone Amplifier</text>
 <text name="_tm_text_menu_drone_amplifier_1" language="zh-Hans">（无人机）无人机功放器</text>
@@ -67,16 +236,16 @@
 <text name="_tm_text_menu_drone_amplifier_2">(Drones) Drone Amplifier [INSTALLED]</text>
 <text name="_tm_text_menu_drone_amplifier_2" language="zh-Hans">（无人机）无人机功放器 [已安装]</text>
 
-<text name="_tm_text_menu_temporal_bot_1">(Medbay) Temporal Bot Dispersal</text>
+<text name="_tm_text_menu_temporal_bot_1">(Medbay) Temporal-Bot Dispersal</text>
 <text name="_tm_text_menu_temporal_bot_1" language="zh-Hans">（医疗舱）纳米时流机</text>
 
-<text name="_tm_text_menu_temporal_bot_2">(Medbay) Temporal Bot Dispersal [INSTALLED]</text>
+<text name="_tm_text_menu_temporal_bot_2">(Medbay) Temporal-Bot Dispersal [INSTALLED]</text>
 <text name="_tm_text_menu_temporal_bot_2" language="zh-Hans">（医疗舱）纳米时流机 [已安装]</text>
 
-<text name="_tm_text_menu_temporal_teleporter_1">(Teleporter) Temporal Bot Teleporter</text>
+<text name="_tm_text_menu_temporal_teleporter_1">(Teleporter) Temporal-Bot Teleporter</text>
 <text name="_tm_text_menu_temporal_teleporter_1" language="zh-Hans">（传送器）纳米时流传送器</text>
 
-<text name="_tm_text_menu_temporal_teleporter_2">(Teleporter) Temporal Bot Teleporter [INSTALLED]</text>
+<text name="_tm_text_menu_temporal_teleporter_2">(Teleporter) Temporal-Bot Teleporter [INSTALLED]</text>
 <text name="_tm_text_menu_temporal_teleporter_2" language="zh-Hans">（传送器）纳米时流传送器 [已安装]</text>
 
 <text name="_tm_text_menu_selective_acceleration_1">(Weapons) Selective Acceleration</text>
@@ -96,6 +265,18 @@
 
 <text name="_tm_text_menu_infinite_shield_2">(Shields) Infinite Shield [INSTALLED]</text>
 <text name="_tm_text_menu_infinite_shield_2" language="zh-Hans">（护盾）无限护盾 [已安装]</text>
+
+<text name="_tm_text_menu_multi_mc_1">(Mind Control) Multi-Person Mind Control</text>
+<text name="_tm_text_menu_multi_mc_1" language="zh-Hans">（心控）多人心控</text>
+
+<text name="_tm_text_menu_multi_mc_2">(Mind Control) Multi-Person Mind Control [INSTALLED]</text>
+<text name="_tm_text_menu_multi_mc_2" language="zh-Hans">（心控）多人心控 [已安装]</text>
+
+<text name="_tm_text_menu_hacking_surge_1">(Hacking) Hacking Surge</text>
+<text name="_tm_text_menu_hacking_surge_1" language="zh-Hans">（黑客）黑客能量涌动</text>
+
+<text name="_tm_text_menu_hacking_surge_2">(Hacking) Hacking Surge [INSTALLED]</text>
+<text name="_tm_text_menu_hacking_surge_2" language="zh-Hans">（黑客）黑客能量涌动 [已安装]</text>
 
 <!-- Details -->
 
@@ -127,10 +308,10 @@
 <text name="_tm_text_detail_breeder_reactor_1">This upgrade is unavailable. Battery system is not installed.</text>
 <text name="_tm_text_detail_breeder_reactor_1" language="zh-Hans">这项升级不可用，未安装电池系统。</text>
 
-<text name="_tm_text_detail_temporal_stun">You are about to install the Temporal Stun.
+<!--<text name="_tm_text_detail_temporal_stun">You are about to install the Temporal Stun.
 [Effects: Enemy crew inside a system room with temporal effect will be stunned. However the enemy ship will also have this effect]</text>
 <text name="_tm_text_detail_temporal_stun" language="zh-Hans">你即将安装时流眩晕。
-[效果：敌方船员在有时流效果的系统舱室内会被眩晕。然而，敌舰也将拥有此效果。]</text>
+[效果：敌方船员在有时流效果的系统舱室内会被眩晕。然而，敌舰也将拥有此效果。]</text>-->
 
 <text name="_tm_text_detail_drone_amplifier">You are about to install the Drone Amplifier.
 [Effects: Acceleration to the drone system will no longer increase the speed of space drones, but rather increase the number of projectiles fired by space drones.]
@@ -151,18 +332,18 @@ Level 4 Temporal: quadruple projectiles</text>
 <text name="_tm_text_detail_drone_amplifier_1">This upgrade is unavailable. Drone system is not installed.</text>
 <text name="_tm_text_detail_drone_amplifier_1" language="zh-Hans">这项升级不可用，未安装无人机系统。</text>
 
-<text name="_tm_text_detail_temporal_bot">You are about to install the Temporal Bot Dispersal.
-[Effects: When the medbay is fully powered and being accelerated, all allied crew on the player's ship (including those being mind-controlled) gain the speed up effect of the temporal system.]</text>
+<text name="_tm_text_detail_temporal_bot">You are about to install the Temporal-Bot Dispersal.
+[Effects: When the medbay is powered and being accelerated, all allied crew on the player's ship (including those being mind-controlled) gain the speed up effect of the temporal system. Each level of medbay provides 25% of temporal system's speed up effect.]</text>
 <text name="_tm_text_detail_temporal_bot" language="zh-Hans">你即将安装纳米时流机。
-[效果：医疗舱有3格供能且对医疗舱进行时流加速时，本舰所有己方船员（包括被心控的船员）获得时流系统的加速效果。]</text>
+[效果：医疗舱有供能且对医疗舱进行时流加速时，本舰所有己方船员（包括被心控的船员）获得时流系统的加速效果。每级医疗舱可提供时流系统25%的加速效果。]</text>
 
-<text name="_tm_text_detail_temporal_bot_1">This upgrade is unavailable. Medbay is not level 3.</text>
-<text name="_tm_text_detail_temporal_bot_1" language="zh-Hans">这项升级不可用，医疗舱未达到三级。</text>
+<text name="_tm_text_detail_temporal_bot_1">This upgrade is unavailable. Medbay is not installed.</text>
+<text name="_tm_text_detail_temporal_bot_1" language="zh-Hans">这项升级不可用，未安装医疗舱。</text>
 
-<text name="_tm_text_detail_temporal_teleporter">You are about to install the Temporal Bot Teleporter.
-[Effects: When the teleporter is fully powered and being accelerated, all allied crew on the enemy ship (including those being mind-controlled) gain the speed up effect of the temporal system.]</text>
+<text name="_tm_text_detail_temporal_teleporter">You are about to install the Temporal-Bot Teleporter.
+[Effects: When the teleporter is fully powered and being accelerated, all allied crew on the enemy ship (including those being mind-controlled) gain the speed up effect of the temporal system. However it's only half as effective, which means it only provides 50% of temporal system's speed up effect.]</text>
 <text name="_tm_text_detail_temporal_teleporter" language="zh-Hans">你即将安装纳米时流传送器。
-[效果：传送器有4格供能且对传送器进行时流加速时，敌舰所有己方船员（包括被心控的船员）获得时流系统的加速效果。]</text>
+[效果：传送器有4格供能且对传送器进行时流加速时，敌舰所有己方船员（包括被心控的船员）获得时流系统的加速效果。然而其加速效果只有时流系统的一半。]</text>
 
 <text name="_tm_text_detail_temporal_teleporter_1">This upgrade is unavailable. Teleporter is not level 4.</text>
 <text name="_tm_text_detail_temporal_teleporter_1" language="zh-Hans">这项升级不可用，传送器未达到四级。</text>
@@ -198,7 +379,23 @@ Level 4 Temporal: +500%*2</text>
 <text name="_tm_text_detail_infinite_shield" language="zh-Hans">你即将安装无限护盾。
 [效果：对护盾系统加速将不再提高正常护盾的充能速度，但是能量护盾的充能将不再有限制并且其充能速度变为两倍。]</text>
 
-<text name="_tm_text_detail_infinite_shield_1">This upgrade is unavailable. Shield system not installed.</text>
+<text name="_tm_text_detail_infinite_shield_1">This upgrade is unavailable. Shield system is not installed.</text>
 <text name="_tm_text_detail_infinite_shield_1" language="zh-Hans">这项升级不可用，未安装护盾系统。</text>
+
+<text name="_tm_text_detail_multi_mc">You are about to install the Multi-Person Mind Control.
+[Effects: When speeding up your mind control system, enemy crewmembers under mind control will not be speeded up, but instead more enemy crewmembers will be under mind control, depending on your speed up level.]</text>
+<text name="_tm_text_detail_multi_mc" language="zh-Hans">你即将安装多人心控。
+[效果：加速心灵控制系统时，受心灵控制的敌方船员不再会被加速，而是会有更多的敌方船员受心灵控制，人数取决于你的加速等级。]</text>
+
+<text name="_tm_text_detail_multi_mc_1">This upgrade is unavailable. Mind Control system is not installed.</text>
+<text name="_tm_text_detail_multi_mc_1" language="zh-Hans">这项升级不可用，未安装心控系统。</text>
+
+<text name="_tm_text_detail_hacking_surge">You are about to install the Hacking Surge.
+[Effects: When speeding up your hacking system, you can no longer speed up the hacking process; instead, more enemy systems will be hacked, depending on your speed up level. The additional systems to hack are randomly determined.]</text>
+<text name="_tm_text_detail_hacking_surge" language="zh-Hans">你即将安装黑客能量涌动。
+[效果：加速黑客系统将不再加速黑客攻击进程，而是会有更多敌方系统遭受黑客攻击，数量取决于你的加速等级。额外遭受黑客攻击的系统是随机决定的。]</text>
+
+<text name="_tm_text_detail_hacking_surge_1">This upgrade is unavailable. Hacking system is not installed.</text>
+<text name="_tm_text_detail_hacking_surge_1" language="zh-Hans">这项升级不可用，未安装黑客系统。</text>
 
 </FTL>
