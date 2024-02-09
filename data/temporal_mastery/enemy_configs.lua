@@ -4,7 +4,7 @@ if not mods.temporal then
 end
 
 local hasAug = mods.temporal.config.hasAug
-local enemyAugs = mods.temporal.config.enemyAugs
+local augments = mods.temporal.config.augs
 local enemyConfig = mods.temporal.config.enemy
 local overclockerAugs = mods.temporal.systems.overclockerAugs
 
@@ -25,10 +25,11 @@ local function enemyAdjustments(shipMgr, difficulty, isBoss)
     if difficulty <= 0 then
         return
     end
+    local augs = augments[1]
     -- Developer Mode
     local hasOverclocker = false
     if difficulty >= 5 then
-        enemyAugs['_TM_AUG_OVERCLOCKER_DEV'] = 1
+        augs['_TM_AUG_OVERCLOCKER_DEV'] = 1
         hasOverclocker = true
     else
         for _, aug in ipairs(overclockerAugs) do
@@ -49,7 +50,7 @@ local function enemyAdjustments(shipMgr, difficulty, isBoss)
     if not hasOverclocker then
         local chance = difficulty * 0.15
         if hasTemporal or math.random() < chance then
-            enemyAugs['_TM_AUG_OVERCLOCKER'] = 1
+            augs['_TM_AUG_OVERCLOCKER'] = 1
             hasOverclocker = true
         end
     end
@@ -57,7 +58,7 @@ local function enemyAdjustments(shipMgr, difficulty, isBoss)
         (difficulty >= 3 and (hasTemporal or isBoss)) or
         (difficulty >= 2 and hasTemporal) or
         (hasTemporal and isBoss) then
-        enemyAugs['_TM_AUG_TEMPORAL_STUN'] = 1
+        augs['_TM_AUG_TEMPORAL_STUN'] = 1
     end
     if difficulty >= 2 and hasOverclocker then
         local chance = (difficulty - 1) * 0.15
@@ -87,21 +88,31 @@ local function enemyAdjustments(shipMgr, difficulty, isBoss)
     if difficulty >= 3 then
         local chance = (difficulty - 2) * 0.15
         if math.random() < chance then
-            enemyAugs['_TM_AUG_ION_SPEEDUP'] = 1
+            augs['_TM_AUG_ION_SPEEDUP'] = 1
         end
         if hasDroneControl and math.random() < chance then
-            enemyAugs['_TM_AUG_SPACE_DRONE_BOOSTER'] = 1
+            augs['_TM_AUG_SPACE_DRONE_BOOSTER'] = 1
         end
         if hasMindControl and math.random() < chance then
-            enemyAugs['_TM_AUG_MIND_SPEEDUP'] = 1
+            augs['_TM_AUG_MIND_SPEEDUP'] = 1
         end
         if hasHacking and math.random() < chance then
-            enemyAugs['_TM_AUG_HACKING_SPEEDUP'] = 1
+            augs['_TM_AUG_HACKING_SPEEDUP'] = 1
         end
         --[[if math.random() < chance then
-            enemyAugs['_TM_AUG_CREW_SPEEDUP'] = 1
+            augs['_TM_AUG_CREW_SPEEDUP'] = 1
         end]]
     end
+    --[[print('--- augments ---')
+    for k, v in pairs(enemyConfig) do
+        if v > 0 then
+            print(k, v)
+        end
+    end
+    for k, v in pairs(augs) do
+        print(k, v)
+    end
+    print('----------------')]]
 end
 
 local function enemyAdjustmentsPost(shipMgr)
@@ -121,7 +132,7 @@ script.on_internal_event(Defines.InternalEvents.CONSTRUCT_SHIP_MANAGER, function
         for key in pairs(enemyConfig) do
             enemyConfig[key] = 0
         end
-        mods.temporal.config.enemyAugs = {}
+        augments[1] = {}
         enemyConfigLoaded = 2
     end
 end)

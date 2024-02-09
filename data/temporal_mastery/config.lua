@@ -80,8 +80,6 @@ local augs = {
     [1] = {}
 }
 config.augs = augs
-config.playerAugs = augs[0]
-config.enemyAugs = augs[1]
 
 local function hasAug(shipMgr, augName)
     local val = shipMgr:HasAugmentation(augName)

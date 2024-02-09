@@ -647,9 +647,7 @@ script.on_render_event(Defines.RenderEvents.MOUSE_CONTROL, function()
     else
         ocButton.bHover = false
     end
-    --ocButton:OnLoop()
     ocButton:OnRender()
-    --print(ocButton.hitbox.x, ocButton.hitbox.y, ocButton.hitbox.w, ocButton.hitbox.h)
 end, function() end)
 
 script.on_internal_event(Defines.InternalEvents.ON_MOUSE_L_BUTTON_DOWN, function()
