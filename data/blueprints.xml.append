@@ -56,7 +56,7 @@
     <title id="_tm_text_aug_overclocker_title"/>
     <desc id="_tm_text_aug_overclocker_desc"/>
     <cost>60</cost>
-    <rarity>3</rarity>
+    <rarity>2</rarity>
     <stackable>false</stackable>
 </augBlueprint>
 
@@ -112,7 +112,7 @@
     <title id="_tm_text_aug_crew_speedup_title"/>
     <desc id="_tm_text_aug_crew_speedup_desc"/>
     <cost>100</cost>
-    <rarity>6</rarity>
+    <rarity>4</rarity>
     <stackable>false</stackable>
 </augBlueprint>
 

@@ -485,9 +485,13 @@ end
 local function renderOverclockerTooltips(shipMgr, mouse, speed)
     -- assume speed ~= 0
     local position = mouse.position
-    local y = 699
-    local iconWidth = 26
-    local iconHeight = 11
+    --local y = 699
+    --local iconWidth = 26
+    --local iconHeight = 11
+
+    local y = 696
+    local iconWidth = 32
+    local iconHeight = 17
     if not(y <= position.y and position.y < y + iconHeight) then
         return false
     end
@@ -569,7 +573,7 @@ end
 
 script.on_internal_event(Defines.InternalEvents.ON_TICK, renderTooltips)
 
-local function overclockerSelectionMode(mouseX, mouseY)
+local function overclockerSelectionMode()
     local cApp = Hyperspace.Global.GetInstance():GetCApp()
     if not cApp.world.bStartedGame or cApp.gui.menu_pause then
         return
@@ -580,13 +584,20 @@ local function overclockerSelectionMode(mouseX, mouseY)
     end
 
     local overclocker = shipMgr.table._tm_systems.overclocker
-    if not overclocker or overclocker.selectionMode ~= true then
+    if not overclocker or not overclocker.selectionMode then
         return
     end
 
-    local y = 699
-    local iconWidth = 26
-    local iconHeight = 11
+    --local y = 699
+    --local iconWidth = 26
+    --local iconHeight = 11
+
+    local y = 696
+    local iconWidth = 32
+    local iconHeight = 17
+    local mouse = Hyperspace.Mouse.position
+    local mouseX = mouse.x
+    local mouseY = mouse.y
     if not(y <= mouseY and mouseY < y + iconHeight) then
         return
     end
