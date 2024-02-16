@@ -269,16 +269,17 @@ local OverclockerSystem = Class{
         -- 0 off 1 on 2 cooldown
         self.status = 0
         self.overclockedRoom = -1
-        self.strength = 2
-        self.powerCost = 3
-        self.level = 0
         self.selectionMode = false
         if config then
             self.timer[2] = config.timer or 10
             self.cooldown[2] = config.cooldown or 40
             self.strength = config.strength or 2
             self.powerCost = config.power or 3
-            self.level = config.power or 0
+            self.level = config.level or 0
+        else
+            self.strength = 2
+            self.powerCost = 3
+            self.level = 0
         end
         if shipMgr.iShipId == 1 then
             self.powerCost = 0
@@ -414,7 +415,7 @@ script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, function(shipMgr)
     local overclocker = systemTable.overclocker
     local maxOverclocker = false
     for _, aug in ipairs(overclockerAugs) do
-        if hasAug(shipMgr, aug.name) > 0 and not maxOverclocker then
+        if hasAug(shipMgr, aug.name) > 0 then
             maxOverclocker = aug
             break
         end
